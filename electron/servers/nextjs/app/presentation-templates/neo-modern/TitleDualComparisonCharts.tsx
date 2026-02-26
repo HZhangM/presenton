@@ -111,7 +111,9 @@ const dynamicSlideLayout: React.FC<{ data: Partial<z.infer<typeof Schema>> }> = 
     const { title, comparisonCards } = data;
 
     const renderChart = (card: NonNullable<typeof comparisonCards>[number]) => {
-        const chartType = card.chartType || 'bar';
+        // Normalize V2 chart type names to V1 equivalents
+        const rawChartType = card.chartType || 'bar';
+        const chartType = rawChartType === 'bar-vertical' ? 'bar' : rawChartType === 'bar-horizontal' ? 'horizontalBar' : rawChartType;
         const formatComma = (value: number) => {
             return value.toLocaleString('en-US');
         };

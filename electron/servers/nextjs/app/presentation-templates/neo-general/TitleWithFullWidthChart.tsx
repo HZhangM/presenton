@@ -116,22 +116,25 @@ const ChartLegend: React.FC<{ series: z.infer<typeof SeriesSchema>[], colors: st
 };
 
 const buildChartData = (
-    categories: string[],
-    series: z.infer<typeof SeriesSchema>[]
-) => categories.map((category, index) => {
-    const entry: Record<string, string | number> = { name: category };
-    series.forEach((serie) => {
-        entry[serie.name] = serie.values[index] ?? 0;
+    categories: string[] | undefined,
+    series: z.infer<typeof SeriesSchema>[] | undefined
+) => {
+    if (!categories?.length || !series?.length) return [];
+    return categories.map((category, index) => {
+        const entry: Record<string, string | number> = { name: category };
+        series.forEach((serie) => {
+            entry[serie.name] = serie.values?.[index] ?? 0;
+        });
+        return entry;
     });
-    return entry;
-});
+};
 
 // Build simple data for single series charts
-const buildSimpleData = (categories: string[], series: z.infer<typeof SeriesSchema>[]) => {
-    if (series.length === 0) return [];
+const buildSimpleData = (categories: string[] | undefined, series: z.infer<typeof SeriesSchema>[] | undefined) => {
+    if (!categories?.length || !series?.length) return [];
     return categories.map((name, index) => ({
         name,
-        value: series[0].values[index] ?? 0,
+        value: series[0].values?.[index] ?? 0,
     }));
 };
 
@@ -167,7 +170,8 @@ const CustomTooltip = ({ active, payload, label }: any) => {
     return null;
 };
 
-const ChartRenderer: React.FC<{ chart: z.infer<typeof Schema>['chart'] }> = ({ chart }) => {
+const ChartRenderer: React.FC<{ chart: z.infer<typeof Schema>['chart'] }> = ({ chart: rawChart }) => {
+    const chart = { ...rawChart, categories: rawChart?.categories ?? [], series: rawChart?.series ?? [] };
     const colors = DEFAULT_CHART_COLORS;
     const data = buildChartData(chart.categories, chart.series);
     const simpleData = buildSimpleData(chart.categories, chart.series);
@@ -194,7 +198,10 @@ const ChartRenderer: React.FC<{ chart: z.infer<typeof Schema>['chart'] }> = ({ c
         return `var(--graph-${index}, ${fallback})`;
     };
 
-    switch (chart.type) {
+    // Normalize V2 chart type names to V1 equivalents
+    const normalizedType = chart.type === 'bar-vertical' ? 'bar' : chart.type === 'bar-horizontal' ? 'horizontalBar' : chart.type;
+
+    switch (normalizedType) {
         case 'line':
             return (
                 <ResponsiveContainer width="100%" height={400}>

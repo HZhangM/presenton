@@ -124,8 +124,10 @@ const CHART_COLORS = [
 
 
 const ChartWithBulletsSlideLayout: React.FC<ChartWithBulletsSlideLayoutProps> = ({ data: slideData }) => {
-    const chartData = slideData?.chartData?.data || [];
-    const chartType = slideData?.chartData?.type;
+    const chartData = Array.isArray(slideData?.chartData?.data) ? slideData.chartData.data : [];
+    const rawChartType = slideData?.chartData?.type;
+    // Normalize: 'bar-vertical' -> 'bar', 'horizontalBar' -> 'bar-horizontal'
+    const chartType = rawChartType === 'bar-vertical' ? 'bar' : rawChartType === 'horizontalBar' ? 'bar-horizontal' : rawChartType;
     const color = 'var(--background-text, #9333ea)';
     const xAxis = chartType === 'scatter' ? 'x' : 'name';
     const yAxis = chartType === 'scatter' ? 'y' : 'value';
@@ -134,6 +136,8 @@ const ChartWithBulletsSlideLayout: React.FC<ChartWithBulletsSlideLayoutProps> = 
     const bulletPoints = slideData?.bulletPoints || []
 
     const renderChart = () => {
+        if (!chartData.length) return null;
+
         const renderPieLabel = (props: any) => {
             const { name, percent, x, y, textAnchor } = props;
             return (

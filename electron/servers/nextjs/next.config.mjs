@@ -1,3 +1,8 @@
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
 // Check if building for Electron or in development mode
 const isElectronBuild = process.env.BUILD_TARGET === 'electron' || process.argv.includes('--electron');
 const isDevelopment = process.env.NODE_ENV !== 'production';
@@ -7,7 +12,7 @@ const nextConfig = {
   distDir: ".next-build",
   ...(isElectronBuild ? { output: "export" } : isDevelopment ? {} : { output: "export" }),
   ...(isDevelopment ? { allowedDevOrigins: ['127.0.0.1:*', 'localhost:*'] } : {}),
-  
+
   // Disable font optimization to avoid Google Fonts download warnings during build
   optimizeFonts: false,
 
@@ -50,6 +55,22 @@ const nextConfig = {
         hostname: "unsplash.com",
       },
     ],
+  },
+
+  webpack: (config, { isServer, webpack }) => {
+    if (isServer) {
+      // Replace Recharts ResponsiveContainer with SSR-safe wrapper on server.
+      // ResponsiveContainer defaults initialDimension to {-1, -1} and returns null
+      // when no ResizeObserver updates dimensions (never happens in SSR).
+      // The wrapper injects reasonable initialDimension so charts render as SVG.
+      config.plugins.push(
+        new webpack.NormalModuleReplacementPlugin(
+          /recharts[\\/]es6[\\/]component[\\/]ResponsiveContainer/,
+          path.resolve(__dirname, 'lib/ssr-recharts-responsive-container.js')
+        )
+      );
+    }
+    return config;
   },
 };
 

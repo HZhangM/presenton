@@ -33,22 +33,23 @@ type CardProps = {
 const Card: React.FC<CardProps> = ({ metric, label, subtext, isHighlighted }) => {
 
 
-    const boxShadow = isHighlighted
-        ? '0 0px 0px var(--background-text,#8600cd)'
-        : 'none';
     const borderRadius = isHighlighted ? '16px' : '0px';
+
+    // Highlighted cards use primary color bg with primary-text color;
+    // non-highlighted cards are transparent with background-text color.
+    const bgColor = isHighlighted ? 'var(--primary-color,#9810FA)' : 'transparent';
+    const textColor = isHighlighted ? 'var(--primary-text,#FFFFFF)' : 'var(--background-text,#101828)';
 
     return (
         <div
             style={{
                 width: '282px',
-                backgroundColor: isHighlighted ? 'var(--card-color,#9810FA)' : 'transparent',
+                backgroundColor: bgColor,
                 borderRadius,
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'flex-start',
                 padding: isHighlighted ? '24px' : '10px',
-                boxShadow,
                 boxSizing: 'border-box',
                 paddingBottom: "70px"
 
@@ -58,7 +59,7 @@ const Card: React.FC<CardProps> = ({ metric, label, subtext, isHighlighted }) =>
                 className="font-normal"
                 style={{
                     fontSize: '29.5px',
-                    color: isHighlighted ? 'var(--background-text,#FFFFFF)' : 'var(--background-text,#101828)',
+                    color: textColor,
                     lineHeight: '29.5px',
                     marginBottom: '15px',
                 }}
@@ -69,7 +70,7 @@ const Card: React.FC<CardProps> = ({ metric, label, subtext, isHighlighted }) =>
                 className=" font-normal"
                 style={{
                     fontSize: '17.7px',
-                    color: isHighlighted ? 'var(--background-text,#FFFFFF)' : 'var(--background-text,#101828)',
+                    color: textColor,
                     lineHeight: '20.4px',
                     marginBottom: '35px',
                     minHeight: '42px',
@@ -81,7 +82,7 @@ const Card: React.FC<CardProps> = ({ metric, label, subtext, isHighlighted }) =>
                 className=" font-normal"
                 style={{
                     fontSize: '13.3px',
-                    color: isHighlighted ? 'var(--background-text,#FFFFFF)' : 'var(--background-text,#101828)',
+                    color: textColor,
                     lineHeight: '18.6px',
                     textTransform: 'uppercase',
                 }}

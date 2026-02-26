@@ -101,7 +101,8 @@ const SemiCircleProgress = ({
     const radius = 40;
     const strokeWidth = 14;
     const circumference = Math.PI * radius;
-    const strokeDashoffset = circumference - (percentage / 100) * circumference;
+    const safePercentage = typeof percentage === 'number' && !isNaN(percentage) ? percentage : 0;
+    const strokeDashoffset = circumference - (safePercentage / 100) * circumference;
     return (
         <div className="relative w-[150px] h-[75px] overflow-hidden">
 

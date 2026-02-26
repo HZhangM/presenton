@@ -52,7 +52,9 @@ export const layoutDescription = 'A slide featuring a centered title, a category
 const CHART_COLORS = ['#1F8A2E', '#A7DBA8', '#4CAF50', '#81C784', '#EC4899', '#10B981'];
 
 const dynamicSlideLayout: React.FC<{ data: Partial<z.infer<typeof Schema>> }> = ({ data }) => {
-    const { title, badgeText, topDescription, bottomDescription, graphData, chartType = 'bar' } = data;
+    const { title, badgeText, topDescription, bottomDescription, graphData, chartType: rawChartType = 'bar' } = data;
+    // Normalize V2 chart type names to V1 equivalents
+    const chartType = rawChartType === 'bar-vertical' ? 'bar' : rawChartType === 'bar-horizontal' ? 'horizontalBar' : rawChartType;
 
     const renderChart = () => {
         const hasValue2 = (graphData?.rows?.some(row => (row.value2 ?? 0) > 0)) ?? false;

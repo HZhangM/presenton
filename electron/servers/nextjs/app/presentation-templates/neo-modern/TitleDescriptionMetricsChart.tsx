@@ -98,8 +98,10 @@ const dynamicSlideLayout: React.FC<{ data: Partial<z.infer<typeof Schema>> }> = 
         chartCategory,
         chartFooterLabel,
         chartData,
-        chartType = 'bar'
+        chartType: rawChartType = 'bar'
     } = data;
+    // Normalize V2 chart type names to V1 equivalents
+    const chartType = rawChartType === 'bar-vertical' ? 'bar' : rawChartType === 'bar-horizontal' ? 'horizontalBar' : rawChartType;
 
     const renderChart = () => {
         const formatComma = (value: number) => {

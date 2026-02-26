@@ -174,7 +174,10 @@ const MiniChartRenderer: React.FC<{
         return `var(--graph-${index}, ${fallback})`;
     };
 
-    switch (chart.type) {
+    // Normalize V1 chart type names to V2 equivalents
+    const normalizedType = chart.type === 'bar' ? 'bar-vertical' : chart.type === 'horizontalBar' ? 'bar-horizontal' : chart.type;
+
+    switch (normalizedType) {
         case 'bar-vertical':
             return (
                 <ResponsiveContainer width="100%" height="100%" maxHeight={400}>

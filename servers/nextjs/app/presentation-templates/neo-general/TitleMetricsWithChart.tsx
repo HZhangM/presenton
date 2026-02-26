@@ -108,21 +108,24 @@ export const layoutName = 'Chart With Sidebar Metrics';
 export const layoutDescription = 'A two-column layout featuring a bold title, a large chart container on the left, and up to 6 vertical metrics on the right sidebar. Supports line, bar, grouped, stacked, clustered, diverging, area, pie, and donut charts.';
 
 const buildChartData = (
-    categories: string[],
-    series: any[]
-) => categories.map((category, index) => {
-    const entry: Record<string, string | number> = { name: category };
-    series.forEach((serie) => {
-        entry[serie.name] = serie.values[index] ?? 0;
+    categories: string[] | undefined,
+    series: any[] | undefined
+) => {
+    if (!categories?.length || !series?.length) return [];
+    return categories.map((category, index) => {
+        const entry: Record<string, string | number> = { name: category };
+        series.forEach((serie) => {
+            entry[serie.name] = serie.values?.[index] ?? 0;
+        });
+        return entry;
     });
-    return entry;
-});
+};
 
-const buildSimpleData = (categories: string[], series: any[]) => {
-    if (series.length === 0) return [];
+const buildSimpleData = (categories: string[] | undefined, series: any[] | undefined) => {
+    if (!categories?.length || !series?.length) return [];
     return categories.map((name, index) => ({
         name,
-        value: series[0].values[index] ?? 0,
+        value: series[0].values?.[index] ?? 0,
     }));
 };
 
@@ -156,8 +159,8 @@ const CustomTooltip = ({ active, payload, label }: any) => {
     return null;
 };
 
-const ChartRenderer: React.FC<{ chart: { categories: string[]; series: any[], type: string, divergingData?: any[], divergingLabels?: [string, string] } }> = ({ chart }) => {
-
+const ChartRenderer: React.FC<{ chart: { categories: string[]; series: any[], type: string, divergingData?: any[], divergingLabels?: [string, string] } }> = ({ chart: rawChart }) => {
+    const chart = { ...rawChart, categories: rawChart?.categories ?? [], series: rawChart?.series ?? [] };
     const data = buildChartData(chart.categories, chart.series);
     const simpleData = buildSimpleData(chart.categories, chart.series);
 

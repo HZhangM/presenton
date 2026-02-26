@@ -96,7 +96,9 @@ const graphColors = (index: number, fallbackColor?: string) => {
 
 const dynamicSlideLayout: React.FC<{ data: Partial<z.infer<typeof Schema>> }> = ({ data }) => {
     const { title, description, metrics, chart } = data;
-    const chartType = chart?.chartType || 'bar';
+    // Normalize V2 chart type names to V1 equivalents
+    const rawChartType = chart?.chartType || 'bar';
+    const chartType = rawChartType === 'bar-vertical' ? 'bar' : rawChartType === 'bar-horizontal' ? 'horizontalBar' : rawChartType;
 
     const renderChart = () => {
         const hasValue2 = (chart?.data?.some(row => (row.value2 ?? 0) > 0)) ?? false;

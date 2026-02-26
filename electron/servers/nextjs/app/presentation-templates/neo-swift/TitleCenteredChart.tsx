@@ -96,7 +96,9 @@ const graphColors = (index: number, fallbackColor?: string) => {
 };
 
 const dynamicSlideLayout: React.FC<{ data: Partial<z.infer<typeof Schema>> }> = ({ data }) => {
-    const { title, chartType = 'bar', graph } = data;
+    const { title, chartType: rawChartType = 'bar', graph } = data;
+    // Normalize V2 chart type names to V1 equivalents
+    const chartType = rawChartType === 'bar-vertical' ? 'bar' : rawChartType === 'bar-horizontal' ? 'horizontalBar' : rawChartType;
 
     const renderCustomLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index, label }: any) => {
         const RADIAN = Math.PI / 180;

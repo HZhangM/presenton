@@ -153,6 +153,7 @@ interface ChartWithBulletsSlideLayoutProps {
 
 // Transform multi-series data
 const transformMultiSeriesData = (data: any[], series: string[]) => {
+    if (!Array.isArray(data) || !Array.isArray(series)) return [];
     return data.map(item => {
         const result: Record<string, any> = { name: item.name };
         series.forEach(s => {
@@ -164,10 +165,11 @@ const transformMultiSeriesData = (data: any[], series: string[]) => {
 
 // Transform diverging data
 const transformDivergingData = (data: any[]) => {
+    if (!Array.isArray(data)) return [];
     return data.map(item => ({
         name: item.name,
         positive: item.positive,
-        negative: -Math.abs(item.negative),
+        negative: -Math.abs(item.negative || 0),
     }));
 };
 
@@ -194,9 +196,11 @@ const CustomTooltip = ({ active, payload, label }: any) => {
 };
 
 const ChartWithBulletsSlideLayout: React.FC<ChartWithBulletsSlideLayoutProps> = ({ data: slideData }) => {
-    const chartData = slideData?.chartData?.data || [];
-    const chartType = slideData?.chartData?.type || 'bar';
-    const series = slideData?.chartData?.series || [];
+    const chartData = Array.isArray(slideData?.chartData?.data) ? slideData.chartData.data : [];
+    const rawChartType = slideData?.chartData?.type || 'bar';
+    // Normalize: 'bar-vertical' -> 'bar', 'horizontalBar' -> 'bar-horizontal'
+    const chartType = rawChartType === 'bar-vertical' ? 'bar' : rawChartType === 'horizontalBar' ? 'bar-horizontal' : rawChartType;
+    const series = Array.isArray(slideData?.chartData?.series) ? slideData.chartData.series : [];
 
     const showLegend = slideData?.showLegend || false;
     const showTooltip = slideData?.showTooltip !== false;
@@ -223,6 +227,8 @@ const ChartWithBulletsSlideLayout: React.FC<ChartWithBulletsSlideLayoutProps> = 
     };
 
     const renderChart = () => {
+        if (!chartData.length) return null;
+
         const renderPieLabel = (props: any) => {
             const { name, percent, x, y, textAnchor } = props;
             if (percent < 0.08) return null;

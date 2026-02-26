@@ -124,7 +124,7 @@ const CHART_COLORS = [
 
 
 const ChartWithBulletsSlideLayout: React.FC<ChartWithBulletsSlideLayoutProps> = ({ data: slideData }) => {
-    const chartData = slideData?.chartData?.data || [];
+    const chartData = Array.isArray(slideData?.chartData?.data) ? slideData.chartData.data : [];
     const chartType = slideData?.chartData?.type;
     const color = 'var(--background-text, #9333ea)';
     const xAxis = chartType === 'scatter' ? 'x' : 'name';
@@ -134,6 +134,8 @@ const ChartWithBulletsSlideLayout: React.FC<ChartWithBulletsSlideLayoutProps> = 
     const bulletPoints = slideData?.bulletPoints || []
 
     const renderChart = () => {
+        if (!chartData.length) return null;
+
         const renderPieLabel = (props: any) => {
             const { name, percent, x, y, textAnchor } = props;
             return (

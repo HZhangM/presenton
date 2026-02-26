@@ -108,7 +108,9 @@ const dynamicSlideLayout: React.FC<{ data: Partial<z.infer<typeof Schema>> }> = 
     const { title, comparisonSections } = data;
 
     const renderChart = (section: typeof comparisonSections extends (infer T)[] | undefined ? T : never) => {
-        const chartType = section?.chartType || 'bar';
+        // Normalize V2 chart type names to V1 equivalents
+        const rawChartType = section?.chartType || 'bar';
+        const chartType = rawChartType === 'bar-vertical' ? 'bar' : rawChartType === 'bar-horizontal' ? 'horizontalBar' : rawChartType;
         const chartData = section?.graph?.rows;
         const hasValue2 = (chartData?.some(row => (row.value2 ?? 0) > 0)) ?? false;
 
