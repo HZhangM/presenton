@@ -110,7 +110,12 @@ html, body { width: 1280px; height: 720px; overflow: hidden; }
 </style>
 </head>
 <body>
+<div class="slide-root" style="position:relative;width:1280px;height:720px;overflow:hidden;">
+<div style="position:absolute;inset:0;z-index:0;background:var(--slide-bg-fallback, var(--background-color, #ffffff));"></div>
+<div style="position:absolute;inset:0;z-index:1;background-image:var(--slide-bg-image, none);background-size:cover;background-position:center;"></div>
+<div style="position:absolute;inset:0;z-index:2;background:var(--slide-bg-overlay, transparent);"></div>
 ${componentHtml}
+</div>
 </body>
 </html>`;
 }
