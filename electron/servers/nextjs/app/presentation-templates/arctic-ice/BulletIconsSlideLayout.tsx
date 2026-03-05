@@ -134,12 +134,12 @@ const ArcticIceBulletIconsSlideLayout: React.FC<ArcticIceBulletIconsSlideLayoutP
                     </div>
 
                     {/* Bullet Points Grid */}
-                    <div className="flex-1 grid grid-cols-2 gap-8">
+                    <div className="flex-1 grid grid-cols-2 gap-4">
                         {bulletPoints.map((bullet, index) => (
-                            <div 
+                            <div
                                 key={index}
-                                className="p-8 rounded-2xl border"
-                                style={{ 
+                                className="p-4 rounded-2xl border flex items-start gap-4"
+                                style={{
                                     background: "rgba(255, 255, 255, 0.65)",
                                     backdropFilter: "blur(16px)",
                                     border: "1px solid rgba(255, 255, 255, 0.5)",
@@ -147,9 +147,9 @@ const ArcticIceBulletIconsSlideLayout: React.FC<ArcticIceBulletIconsSlideLayoutP
                                 }}
                             >
                                 {/* Icon */}
-                                <div 
-                                    className="w-14 h-14 rounded-xl mb-6 flex items-center justify-center"
-                                    style={{ 
+                                <div
+                                    className="w-10 h-10 rounded-xl flex-shrink-0 flex items-center justify-center"
+                                    style={{
                                         background: "var(--primary-color, #0288d1)",
                                         boxShadow: "0 4px 16px rgba(2, 136, 209, 0.2)"
                                     }}
@@ -157,26 +157,27 @@ const ArcticIceBulletIconsSlideLayout: React.FC<ArcticIceBulletIconsSlideLayoutP
                                     <RemoteSvgIcon
                                         url={bullet.icon.__icon_url__}
                                         strokeColor="currentColor"
-                                        className="w-7 h-7"
+                                        className="w-6 h-6"
                                         color="var(--primary-text, #ffffff)"
                                         title={bullet.icon.__icon_query__}
                                     />
                                 </div>
 
                                 {/* Content */}
-                                <h3 
-                                    className="text-xl font-medium mb-4" 
-                                    style={{ color: "var(--background-text, #1a3a50)" }}
-                                >
-                                    {bullet.title}
-                                </h3>
-                                
-                                <p 
-                                    className="text-base font-light leading-relaxed" 
-                                    style={{ color: "var(--background-text, #1a3a50)", opacity: 0.8 }}
-                                >
-                                    {bullet.description}
-                                </p>
+                                <div className="flex-1 min-w-0">
+                                    <h3
+                                        className="text-xl font-medium mb-1"
+                                        style={{ color: "var(--background-text, #1a3a50)" }}
+                                    >
+                                        {bullet.title}
+                                    </h3>
+                                    <p
+                                        className="text-base font-light leading-relaxed"
+                                        style={{ color: "var(--background-text, #1a3a50)", opacity: 0.8 }}
+                                    >
+                                        {bullet.description}
+                                    </p>
+                                </div>
                             </div>
                         ))}
                     </div>

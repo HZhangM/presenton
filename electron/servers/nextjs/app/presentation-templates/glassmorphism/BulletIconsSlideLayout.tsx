@@ -106,8 +106,8 @@ const GlassmorphismBulletIconsSlideLayout: React.FC<GlassmorphismBulletIconsSlid
                 {/* Main Content */}
                 <div className="flex flex-col h-full px-12 pt-20 pb-12">
                     {/* Header Section */}
-                    <div className="mb-12">
-                        <div className="p-8 rounded-3xl" style={{
+                    <div className="mb-6">
+                        <div className="p-6 rounded-3xl" style={{
                             background: "rgba(255,255,255,0.15)",
                             backdropFilter: "blur(20px)",
                             border: "1px solid rgba(255,255,255,0.2)",
@@ -124,39 +124,38 @@ const GlassmorphismBulletIconsSlideLayout: React.FC<GlassmorphismBulletIconsSlid
                     </div>
 
                     {/* Bullet Points Grid */}
-                    <div className="flex-1 grid grid-cols-2 gap-8">
+                    <div className="flex-1 grid grid-cols-2 gap-4">
                         {bulletPoints.map((bullet, index) => (
-                            <div key={index} className="p-6 rounded-2xl" style={{
+                            <div key={index} className="p-5 rounded-2xl flex items-start gap-4" style={{
                                 background: "rgba(255,255,255,0.15)",
                                 backdropFilter: "blur(20px)",
                                 border: "1px solid rgba(255,255,255,0.2)",
                                 boxShadow: "0 8px 32px rgba(0,0,0,0.1)"
                             }}>
                                 {/* Icon Container */}
-                                <div className="flex items-center mb-4">
-                                    <div className="w-16 h-16 rounded-2xl flex items-center justify-center mr-4" style={{
-                                        background: "rgba(255,255,255,0.2)",
-                                        backdropFilter: "blur(10px)",
-                                        border: "1px solid rgba(255,255,255,0.3)"
-                                    }}>
-                                        <RemoteSvgIcon
-                                            url={bullet.icon.__icon_url__}
-                                            strokeColor={"currentColor"}
-                                            className="w-8 h-8"
-                                            color="var(--primary-text, #ffffff)"
-                                            title={bullet.icon.__icon_query__}
-                                        />
-                                    </div>
-                                    <div className="w-12 h-0.5 rounded-full" style={{ background: "var(--primary-color, #7c3aed)" }}></div>
+                                <div className="w-12 h-12 rounded-xl flex-shrink-0 flex items-center justify-center" style={{
+                                    background: "rgba(255,255,255,0.2)",
+                                    backdropFilter: "blur(10px)",
+                                    border: "1px solid rgba(255,255,255,0.3)"
+                                }}>
+                                    <RemoteSvgIcon
+                                        url={bullet.icon.__icon_url__}
+                                        strokeColor={"currentColor"}
+                                        className="w-6 h-6"
+                                        color="var(--primary-text, #ffffff)"
+                                        title={bullet.icon.__icon_query__}
+                                    />
                                 </div>
 
                                 {/* Content */}
-                                <h3 className="text-2xl font-bold mb-3" style={{ color: "var(--primary-text, #ffffff)" }}>
-                                    {bullet.title}
-                                </h3>
-                                <p className="text-base leading-relaxed opacity-90" style={{ color: "var(--primary-text, #ffffff)" }}>
-                                    {bullet.description}
-                                </p>
+                                <div className="flex-1 min-w-0">
+                                    <h3 className="text-2xl font-bold mb-1" style={{ color: "var(--primary-text, #ffffff)" }}>
+                                        {bullet.title}
+                                    </h3>
+                                    <p className="text-base leading-relaxed opacity-90" style={{ color: "var(--primary-text, #ffffff)" }}>
+                                        {bullet.description}
+                                    </p>
+                                </div>
                             </div>
                         ))}
                     </div>

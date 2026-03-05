@@ -172,45 +172,43 @@ const DarkCorporateBulletIconsSlideLayout: React.FC<DarkCorporateBulletIconsSlid
                     </div>
 
                     {/* Bullet Points Grid */}
-                    <div className="flex-1 grid grid-cols-2 gap-8">
+                    <div className="flex-1 grid grid-cols-2 gap-4">
                         {bulletPoints.map((bullet, index) => (
-                            <div 
-                                key={index} 
-                                className="p-6 rounded-lg relative"
-                                style={{ 
+                            <div
+                                key={index}
+                                className="p-4 rounded-lg relative flex items-start gap-4"
+                                style={{
                                     border: '1px solid rgba(99,102,241,0.12)',
                                     background: 'rgba(99,102,241,0.06)',
                                     borderLeft: '3px solid var(--primary-color, #6366f1)'
                                 }}
                             >
                                 {/* Icon */}
-                                <div className="mb-4">
-                                    <div 
-                                        className="w-14 h-14 rounded-lg flex items-center justify-center"
-                                        style={{ 
-                                            background: 'var(--primary-color, #6366f1)',
-                                            boxShadow: '0 4px 20px rgba(99, 102, 241, 0.3)'
-                                        }}
-                                    >
-                                        <RemoteSvgIcon
-                                            url={bullet.icon.__icon_url__}
-                                            className="w-7 h-7"
-                                            color="var(--primary-text, #ffffff)"
-                                            strokeColor="var(--primary-text, #ffffff)"
-                                            title={bullet.icon.__icon_query__}
-                                        />
-                                    </div>
+                                <div
+                                    className="w-10 h-10 rounded-lg flex-shrink-0 flex items-center justify-center"
+                                    style={{
+                                        background: 'var(--primary-color, #6366f1)',
+                                        boxShadow: '0 4px 20px rgba(99, 102, 241, 0.3)'
+                                    }}
+                                >
+                                    <RemoteSvgIcon
+                                        url={bullet.icon.__icon_url__}
+                                        className="w-6 h-6"
+                                        color="var(--primary-text, #ffffff)"
+                                        strokeColor="var(--primary-text, #ffffff)"
+                                        title={bullet.icon.__icon_query__}
+                                    />
                                 </div>
 
                                 {/* Content */}
-                                <div>
-                                    <h3 
-                                        className="text-xl font-semibold mb-3"
+                                <div className="flex-1 min-w-0">
+                                    <h3
+                                        className="text-xl font-semibold mb-1"
                                         style={{ color: "var(--background-text, #e5e7eb)" }}
                                     >
                                         {bullet.title}
                                     </h3>
-                                    <p 
+                                    <p
                                         className="text-base leading-relaxed"
                                         style={{ color: "var(--background-text, #e5e7eb)", opacity: 0.8 }}
                                     >

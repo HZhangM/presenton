@@ -113,7 +113,7 @@ const GlassmorphismTimelineSlide: React.FC<{ data: Partial<z.infer<typeof Schema
                             return (
                                 <div
                                     key={index}
-                                    className="absolute"
+                                    className="absolute left-0 right-0"
                                     style={{ top: `${topPosition}%` }}
                                 >
                                     {/* Timeline Dot */}

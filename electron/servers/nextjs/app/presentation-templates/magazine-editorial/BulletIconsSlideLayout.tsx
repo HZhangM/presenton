@@ -149,11 +149,11 @@ const MagazineEditorialBulletIconsSlideLayout: React.FC<MagazineEditorialBulletI
                     ></div>
 
                     {/* Bullet Points Grid */}
-                    <div className="flex-1 grid grid-cols-2 gap-8">
+                    <div className="flex-1 grid grid-cols-2 gap-4">
                         {bulletPoints.map((bullet, index) => (
-                            <div 
-                                key={index} 
-                                className="p-6 relative"
+                            <div
+                                key={index}
+                                className="p-4 relative flex items-start gap-4"
                                 style={{
                                     border: '2px solid var(--background-text, #1a1a1a)',
                                     background: '#ffffff',
@@ -161,9 +161,9 @@ const MagazineEditorialBulletIconsSlideLayout: React.FC<MagazineEditorialBulletI
                                 }}
                             >
                                 {/* Drop Number */}
-                                <div 
-                                    className="absolute -top-4 -left-4 w-12 h-12 flex items-center justify-center text-2xl font-bold"
-                                    style={{ 
+                                <div
+                                    className="absolute -top-3 -left-3 w-8 h-8 flex items-center justify-center text-sm font-bold"
+                                    style={{
                                         background: 'var(--primary-color, #e53935)',
                                         color: 'var(--primary-text, #ffffff)',
                                         fontFamily: "var(--body-font-family, DM Sans)"
@@ -173,35 +173,33 @@ const MagazineEditorialBulletIconsSlideLayout: React.FC<MagazineEditorialBulletI
                                 </div>
 
                                 {/* Icon */}
-                                <div className="mb-4 flex justify-end">
-                                    <div className="w-10 h-10 flex items-center justify-center">
-                                        <RemoteSvgIcon
-                                            url={bullet.icon.__icon_url__}
-                                            className="w-8 h-8"
-                                            color="var(--background-text, #1a1a1a)"
-                                            title={bullet.icon.__icon_query__}
-                                        />
-                                    </div>
+                                <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center">
+                                    <RemoteSvgIcon
+                                        url={bullet.icon.__icon_url__}
+                                        className="w-8 h-8"
+                                        color="var(--background-text, #1a1a1a)"
+                                        title={bullet.icon.__icon_query__}
+                                    />
                                 </div>
 
                                 {/* Content */}
-                                <div>
-                                    <h3 
-                                        className="text-2xl font-normal mb-3 leading-tight"
-                                        style={{ 
+                                <div className="flex-1 min-w-0">
+                                    <h3
+                                        className="text-2xl font-normal mb-1 leading-tight"
+                                        style={{
                                             color: "var(--background-text, #1a1a1a)",
                                             fontFamily: "var(--heading-font-family, DM Serif Display)"
                                         }}
                                     >
                                         {bullet.title}
                                     </h3>
-                                    <div 
-                                        className="w-8 h-0.5 mb-4"
+                                    <div
+                                        className="w-8 h-0.5 mb-2"
                                         style={{ background: 'var(--primary-color, #e53935)' }}
                                     ></div>
-                                    <p 
+                                    <p
                                         className="text-base leading-relaxed font-normal"
-                                        style={{ 
+                                        style={{
                                             color: "var(--background-text, #1a1a1a)",
                                             fontFamily: "var(--body-font-family, DM Sans)"
                                         }}

@@ -107,7 +107,7 @@ const WatercolorBulletIconsSlideLayout: React.FC<WatercolorBulletIconsSlideLayou
                 {/* Main content */}
                 <div className="flex flex-col h-full px-12 lg:px-20 pt-20 pb-12">
                     {/* Header section */}
-                    <div className="mb-12 text-center">
+                    <div className="mb-6 text-center">
                         <h1 
                             className="text-5xl lg:text-6xl font-bold mb-6 leading-tight"
                             style={{ 
@@ -134,11 +134,11 @@ const WatercolorBulletIconsSlideLayout: React.FC<WatercolorBulletIconsSlideLayou
 
                     {/* Bullet points grid */}
                     <div className="flex-1 flex items-center justify-center">
-                        <div className={`grid gap-8 w-full max-w-5xl ${bulletPoints.length <= 2 ? 'grid-cols-2' : bulletPoints.length === 3 ? 'grid-cols-3' : 'grid-cols-2'}`}>
+                        <div className={`grid gap-4 w-full max-w-5xl ${bulletPoints.length <= 2 ? 'grid-cols-2' : bulletPoints.length === 3 ? 'grid-cols-3' : 'grid-cols-2'}`}>
                             {bulletPoints.map((bullet, index) => (
-                                <div 
+                                <div
                                     key={index}
-                                    className="p-8 rounded-3xl border text-center"
+                                    className="p-5 rounded-3xl border flex items-start gap-4"
                                     style={{
                                         backdropFilter: "blur(12px)",
                                         background: "var(--card-color, rgba(255, 255, 255, 0.65))",
@@ -147,40 +147,40 @@ const WatercolorBulletIconsSlideLayout: React.FC<WatercolorBulletIconsSlideLayou
                                     }}
                                 >
                                     {/* Icon */}
-                                    <div className="flex justify-center mb-6">
-                                        <div 
-                                            className="w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg"
-                                            style={{ background: "var(--primary-color, #7c5cbf)" }}
-                                        >
-                                            <RemoteSvgIcon
-                                                url={bullet.icon.__icon_url__}
-                                                strokeColor={"currentColor"}
-                                                className="w-8 h-8"
-                                                color="var(--primary-text, #ffffff)"
-                                                title={bullet.icon.__icon_query__}
-                                            />
-                                        </div>
+                                    <div
+                                        className="w-12 h-12 rounded-xl flex-shrink-0 flex items-center justify-center shadow-lg"
+                                        style={{ background: "var(--primary-color, #7c5cbf)" }}
+                                    >
+                                        <RemoteSvgIcon
+                                            url={bullet.icon.__icon_url__}
+                                            strokeColor={"currentColor"}
+                                            className="w-6 h-6"
+                                            color="var(--primary-text, #ffffff)"
+                                            title={bullet.icon.__icon_query__}
+                                        />
                                     </div>
 
                                     {/* Content */}
-                                    <h3 
-                                        className="text-2xl font-bold mb-4"
-                                        style={{ 
-                                            color: "var(--background-text, #2d2d3d)",
-                                            fontFamily: "var(--heading-font-family, Playfair Display)"
-                                        }}
-                                    >
-                                        {bullet.title}
-                                    </h3>
-                                    <p 
-                                        className="text-lg leading-relaxed"
-                                        style={{ 
-                                            color: "var(--background-text, #2d2d3d)",
-                                            fontFamily: "var(--body-font-family, Lora)"
-                                        }}
-                                    >
-                                        {bullet.description}
-                                    </p>
+                                    <div className="flex-1 min-w-0">
+                                        <h3
+                                            className="text-2xl font-bold mb-1"
+                                            style={{
+                                                color: "var(--background-text, #2d2d3d)",
+                                                fontFamily: "var(--heading-font-family, Playfair Display)"
+                                            }}
+                                        >
+                                            {bullet.title}
+                                        </h3>
+                                        <p
+                                            className="text-lg leading-relaxed"
+                                            style={{
+                                                color: "var(--background-text, #2d2d3d)",
+                                                fontFamily: "var(--body-font-family, Lora)"
+                                            }}
+                                        >
+                                            {bullet.description}
+                                        </p>
+                                    </div>
                                 </div>
                             ))}
                         </div>

@@ -133,11 +133,11 @@ const CandyPastelBulletIconsSlideLayout: React.FC<CandyPastelBulletIconsSlideLay
 
                     {/* Bullet Points Grid */}
                     <div className="flex-1 flex items-center justify-center">
-                        <div className={`grid gap-8 w-full max-w-5xl ${bulletPoints.length <= 2 ? 'grid-cols-2' : 'grid-cols-2 lg:grid-cols-3'}`}>
+                        <div className={`grid gap-4 w-full max-w-5xl ${bulletPoints.length <= 2 ? 'grid-cols-2' : 'grid-cols-2 lg:grid-cols-3'}`}>
                             {bulletPoints.map((bullet, index) => (
-                                <div 
-                                    key={index} 
-                                    className="p-6 text-center"
+                                <div
+                                    key={index}
+                                    className="p-4 flex items-start gap-3"
                                     style={{
                                         background: "rgba(255,255,255,0.65)",
                                         border: "2px solid rgba(171,71,188,0.12)",
@@ -146,42 +146,40 @@ const CandyPastelBulletIconsSlideLayout: React.FC<CandyPastelBulletIconsSlideLay
                                     }}
                                 >
                                     {/* Icon */}
-                                    <div className="flex justify-center mb-4">
-                                        <div 
-                                            className="w-16 h-16 rounded-full flex items-center justify-center shadow-md"
-                                            style={{ background: "var(--primary-color, #ab47bc)" }}
-                                        >
-                                            <RemoteSvgIcon
-                                                url={bullet.icon.__icon_url__}
-                                                strokeColor="currentColor"
-                                                className="w-8 h-8"
-                                                color="var(--primary-text, #ffffff)"
-                                                title={bullet.icon.__icon_query__}
-                                            />
-                                        </div>
+                                    <div
+                                        className="w-10 h-10 rounded-full flex-shrink-0 flex items-center justify-center shadow-md"
+                                        style={{ background: "var(--primary-color, #ab47bc)" }}
+                                    >
+                                        <RemoteSvgIcon
+                                            url={bullet.icon.__icon_url__}
+                                            strokeColor="currentColor"
+                                            className="w-6 h-6"
+                                            color="var(--primary-text, #ffffff)"
+                                            title={bullet.icon.__icon_query__}
+                                        />
                                     </div>
 
-                                    {/* Title */}
-                                    <h3 
-                                        className="text-2xl font-600 mb-3"
-                                        style={{ 
-                                            color: "var(--background-text, #4a3560)",
-                                            fontFamily: "var(--heading-font-family, Fredoka)"
-                                        }}
-                                    >
-                                        {bullet.title}
-                                    </h3>
-
-                                    {/* Description */}
-                                    <p 
-                                        className="text-base leading-relaxed"
-                                        style={{ 
-                                            color: "var(--background-text, #4a3560)",
-                                            fontFamily: "var(--body-font-family, Quicksand)"
-                                        }}
-                                    >
-                                        {bullet.description}
-                                    </p>
+                                    {/* Content */}
+                                    <div className="flex-1 min-w-0">
+                                        <h3
+                                            className="text-2xl font-600 mb-1"
+                                            style={{
+                                                color: "var(--background-text, #4a3560)",
+                                                fontFamily: "var(--heading-font-family, Fredoka)"
+                                            }}
+                                        >
+                                            {bullet.title}
+                                        </h3>
+                                        <p
+                                            className="text-base leading-relaxed"
+                                            style={{
+                                                color: "var(--background-text, #4a3560)",
+                                                fontFamily: "var(--body-font-family, Quicksand)"
+                                            }}
+                                        >
+                                            {bullet.description}
+                                        </p>
+                                    </div>
                                 </div>
                             ))}
                         </div>
