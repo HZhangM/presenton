@@ -182,11 +182,11 @@ const RetroSynthwaveBulletIconsSlideLayout: React.FC<RetroSynthwaveBulletIconsSl
                                         }}
                                     >
                                         <RemoteSvgIcon
-                                            url={bullet.icon.__icon_url__}
+                                            url={bullet.icon?.__icon_url__}
                                             strokeColor={"currentColor"}
                                             className="w-8 h-8"
                                             color="var(--primary-color, #ff3366)"
-                                            title={bullet.icon.__icon_query__}
+                                            title={bullet.icon?.__icon_query__}
                                         />
                                     </div>
 

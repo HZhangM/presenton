@@ -150,10 +150,10 @@ const NatureForestBulletIconsSlideLayout: React.FC<NatureForestBulletIconsSlideL
                                 <div className="flex-shrink-0 w-14 h-14 rounded-full flex items-center justify-center"
                                      style={{ background: "var(--primary-color, #7cb342)" }}>
                                     <RemoteSvgIcon
-                                        url={bullet.icon.__icon_url__}
+                                        url={bullet.icon?.__icon_url__}
                                         className="w-7 h-7"
                                         color="var(--primary-text, #1a2e10)"
-                                        title={bullet.icon.__icon_query__}
+                                        title={bullet.icon?.__icon_query__}
                                     />
                                 </div>
 

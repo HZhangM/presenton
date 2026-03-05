@@ -151,11 +151,11 @@ const CandyPastelBulletIconsSlideLayout: React.FC<CandyPastelBulletIconsSlideLay
                                         style={{ background: "var(--primary-color, #ab47bc)" }}
                                     >
                                         <RemoteSvgIcon
-                                            url={bullet.icon.__icon_url__}
+                                            url={bullet.icon?.__icon_url__}
                                             strokeColor="currentColor"
                                             className="w-6 h-6"
                                             color="var(--primary-text, #ffffff)"
-                                            title={bullet.icon.__icon_query__}
+                                            title={bullet.icon?.__icon_query__}
                                         />
                                     </div>
 

@@ -154,11 +154,11 @@ const BulletPointsWithIconsSlideLayout: React.FC<BulletPointsWithIconsSlideLayou
                                     {/* Icon */}
                                     <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center">
                                         <RemoteSvgIcon
-                                            url={bullet.icon.__icon_url__}
+                                            url={bullet.icon?.__icon_url__}
                                             strokeColor="var(--primary-color, #1a1a1a)"
                                             className="w-8 h-8"
                                             color="var(--primary-color, #1a1a1a)"
-                                            title={bullet.icon.__icon_query__}
+                                            title={bullet.icon?.__icon_query__}
                                         />
                                     </div>
 

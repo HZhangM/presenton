@@ -175,10 +175,10 @@ const MagazineEditorialBulletIconsSlideLayout: React.FC<MagazineEditorialBulletI
                                 {/* Icon */}
                                 <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center">
                                     <RemoteSvgIcon
-                                        url={bullet.icon.__icon_url__}
+                                        url={bullet.icon?.__icon_url__}
                                         className="w-8 h-8"
                                         color="var(--background-text, #1a1a1a)"
-                                        title={bullet.icon.__icon_query__}
+                                        title={bullet.icon?.__icon_query__}
                                     />
                                 </div>
 

@@ -139,11 +139,11 @@ const GlassmorphismBulletIconsSlideLayout: React.FC<GlassmorphismBulletIconsSlid
                                     border: "1px solid rgba(255,255,255,0.3)"
                                 }}>
                                     <RemoteSvgIcon
-                                        url={bullet.icon.__icon_url__}
+                                        url={bullet.icon?.__icon_url__}
                                         strokeColor={"currentColor"}
                                         className="w-6 h-6"
                                         color="var(--primary-text, #ffffff)"
-                                        title={bullet.icon.__icon_query__}
+                                        title={bullet.icon?.__icon_query__}
                                     />
                                 </div>
 

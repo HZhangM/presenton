@@ -155,11 +155,11 @@ const NeonCyberpunkBulletIconsSlideLayout: React.FC<NeonCyberpunkBulletIconsSlid
                                         }}
                                     >
                                         <RemoteSvgIcon
-                                            url={bullet.icon.__icon_url__}
+                                            url={bullet.icon?.__icon_url__}
                                             strokeColor={"currentColor"}
                                             className="w-6 h-6"
                                             color={index % 2 === 0 ? "var(--primary-color, #ff2d95)" : "#00ffff"}
-                                            title={bullet.icon.__icon_query__}
+                                            title={bullet.icon?.__icon_query__}
                                         />
                                     </div>
 

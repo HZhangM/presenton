@@ -168,11 +168,11 @@ const PixelRetroBulletIconsSlideLayout: React.FC<PixelRetroBulletIconsSlideLayou
                                             background: 'var(--primary-color, #50c878)'
                                         }} className="flex-shrink-0 w-12 h-12 flex items-center justify-center">
                                             <RemoteSvgIcon
-                                                url={bullet.icon.__icon_url__}
+                                                url={bullet.icon?.__icon_url__}
                                                 strokeColor={"currentColor"}
                                                 className="w-6 h-6"
                                                 color="var(--primary-text, #1a1a2e)"
-                                                title={bullet.icon.__icon_query__}
+                                                title={bullet.icon?.__icon_query__}
                                             />
                                         </div>
 

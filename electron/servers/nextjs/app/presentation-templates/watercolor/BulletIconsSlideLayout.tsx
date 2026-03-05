@@ -152,11 +152,11 @@ const WatercolorBulletIconsSlideLayout: React.FC<WatercolorBulletIconsSlideLayou
                                         style={{ background: "var(--primary-color, #7c5cbf)" }}
                                     >
                                         <RemoteSvgIcon
-                                            url={bullet.icon.__icon_url__}
+                                            url={bullet.icon?.__icon_url__}
                                             strokeColor={"currentColor"}
                                             className="w-6 h-6"
                                             color="var(--primary-text, #ffffff)"
-                                            title={bullet.icon.__icon_query__}
+                                            title={bullet.icon?.__icon_query__}
                                         />
                                     </div>
 

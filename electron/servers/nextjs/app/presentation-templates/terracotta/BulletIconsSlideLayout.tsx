@@ -159,11 +159,11 @@ const TerracottaBulletIconsSlideLayout: React.FC<TerracottaBulletIconsSlideLayou
                                         }}
                                     >
                                         <RemoteSvgIcon
-                                            url={bullet.icon.__icon_url__}
+                                            url={bullet.icon?.__icon_url__}
                                             strokeColor={"currentColor"}
                                             className="w-6 h-6"
                                             color="var(--primary-text, #faf0e6)"
-                                            title={bullet.icon.__icon_query__}
+                                            title={bullet.icon?.__icon_query__}
                                         />
                                     </div>
 

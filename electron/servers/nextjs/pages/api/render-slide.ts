@@ -16,6 +16,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import React from "react";
 import ReactDOMServer from "react-dom/server";
 import { getLayoutByLayoutId, allLayouts } from "@/app/presentation-templates";
+import { resolveAllIcons } from "@/lib/iconResolver";
 
 type ResponseData = {
     html?: string;
@@ -59,9 +60,12 @@ export default async function handler(
             });
         }
 
+        // Resolve __icon_query__ → __icon_url__ (data URIs) before rendering
+        const resolvedContent = resolveAllIcons(content_json || {});
+
         // Render the React component to static HTML
         const element = React.createElement(template.component, {
-            data: content_json || {},
+            data: resolvedContent,
         });
         const componentHtml = ReactDOMServer.renderToStaticMarkup(element);
 
