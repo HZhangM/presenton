@@ -112,6 +112,27 @@ function cacheSet(key: string, value: string) {
   }
 }
 
+/**
+ * Decode a base64 data URI to raw SVG text.
+ * Returns null if the URL is not a base64 SVG data URI.
+ */
+function decodeDataUri(url: string): string | null {
+  if (!url.startsWith("data:image/svg+xml;base64,")) return null;
+  try {
+    const b64 = url.slice("data:image/svg+xml;base64,".length);
+    // Works in both Node.js (SSR) and browser
+    if (typeof atob === "function") {
+      return atob(b64);
+    }
+    if (typeof Buffer !== "undefined") {
+      return Buffer.from(b64, "base64").toString("utf-8");
+    }
+    return null;
+  } catch {
+    return null;
+  }
+}
+
 export function useRemoteSvgIcon(url?: string, options: RemoteSvgOptions = {}) {
   const [svgMarkup, setSvgMarkup] = React.useState<string | null>(null);
   const [error, setError] = React.useState<string | null>(null);
@@ -196,7 +217,32 @@ export const RemoteSvgIcon: React.FC<{
   title?: string;
   color?: string;
 }> = ({ url, strokeColor, fillColor, className, title, color }) => {
-  const { svgMarkup } = useRemoteSvgIcon(url, { strokeColor, fillColor, className, title, color });
+  const isDataUri = url && url.startsWith("data:");
+
+  // Hook must always be called (Rules of Hooks), but skip fetch for data URIs
+  const { svgMarkup } = useRemoteSvgIcon(
+    isDataUri ? undefined : url,
+    { strokeColor, fillColor, className, title, color },
+  );
+
+  // Data URIs: render as <img> directly (SSR-safe)
+  if (isDataUri) {
+    const isWhite = color === "#ffffff" || color === "white"
+      || (typeof color === "string" && color.includes("#ffffff"));
+    return (
+      <img
+        src={url}
+        className={className}
+        alt={title || ""}
+        style={{
+          display: "inline-block",
+          filter: `brightness(0) saturate(100%) invert(${isWhite ? "1" : "0"})`,
+        }}
+      />
+    );
+  }
+
+  // Remote URLs: use hook result (client-side only)
   if (!svgMarkup) return null;
   return (
     <span

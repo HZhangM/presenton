@@ -136,6 +136,15 @@ export function resolveIconQuery(query: string): string {
         return svgToDataUri(bestEntry.content);
     }
 
+    // 4. Fallback: return a generic placeholder icon (circle-dashed)
+    //    so the slide still shows something rather than an empty circle.
+    const fallback = index.get("circle");
+    if (fallback) {
+        console.warn(`[iconResolver] No match for "${query}", using fallback`);
+        return svgToDataUri(fallback.content);
+    }
+
+    console.warn(`[iconResolver] No match for "${query}", no fallback available`);
     return "";
 }
 

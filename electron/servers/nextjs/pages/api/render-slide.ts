@@ -61,7 +61,15 @@ export default async function handler(
         }
 
         // Resolve __icon_query__ → __icon_url__ (data URIs) before rendering
-        const resolvedContent = resolveAllIcons(content_json || {});
+        const contentCopy = JSON.parse(JSON.stringify(content_json || {}));
+        const resolvedContent = resolveAllIcons(contentCopy);
+
+        // Debug: log icon resolution results
+        const iconsBefore = JSON.stringify(content_json).match(/__icon_query__/g)?.length ?? 0;
+        const iconsAfter = JSON.stringify(resolvedContent).match(/__icon_url__/g)?.length ?? 0;
+        if (iconsBefore > 0 || iconsAfter > 0) {
+            console.log(`[render-slide] Icons: ${iconsBefore} queries found, ${iconsAfter} URLs resolved`);
+        }
 
         // Render the React component to static HTML
         const element = React.createElement(template.component, {
