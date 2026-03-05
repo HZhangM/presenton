@@ -2,19 +2,34 @@
 import { TemplateWithData, TemplateGroupSettings, createTemplateEntry, TemplateLayoutsWithSettings } from "./utils";
 
 import { templates as arcticIceTemplates, settings as arcticIceSettings } from "./arctic-ice";
+import { templates as artDecoTemplates, settings as artDecoSettings } from "./art-deco";
+import { templates as auroraBorealisTemplates, settings as auroraBorealisSettings } from "./aurora-borealis";
 import { templates as blueprintTemplates, settings as blueprintSettings } from "./blueprint";
 import { templates as botanicalTemplates, settings as botanicalSettings } from "./botanical";
+import { templates as brutalistWebTemplates, settings as brutalistWebSettings } from "./brutalist-web";
 import { templates as candyPastelTemplates, settings as candyPastelSettings } from "./candy-pastel";
 import { templates as chalkPastelTemplates, settings as chalkPastelSettings } from "./chalk-pastel";
 import { templates as chalkboardTemplates, settings as chalkboardSettings } from "./chalkboard";
+import { templates as comicBookTemplates, settings as comicBookSettings } from "./comic-book";
 import { templates as concreteIndustrialTemplates, settings as concreteIndustrialSettings } from "./concrete-industrial";
+import { templates as copperPatinaTemplates, settings as copperPatinaSettings } from "./copper-patina";
+import { templates as coralReefTemplates, settings as coralReefSettings } from "./coral-reef";
+import { templates as darkAcademiaTemplates, settings as darkAcademiaSettings } from "./dark-academia";
 import { templates as darkCorporateTemplates, settings as darkCorporateSettings } from "./dark-corporate";
+import { templates as desertDuneTemplates, settings as desertDuneSettings } from "./desert-dune";
+import { templates as electricPurpleTemplates, settings as electricPurpleSettings } from "./electric-purple";
 import { templates as generalTemplates, settings as generalSettings } from "./general";
 import { templates as glassmorphismTemplates, settings as glassmorphismSettings } from "./glassmorphism";
+import { templates as japaneseUkiyoeTemplates, settings as japaneseUkiyoeSettings } from "./japanese-ukiyoe";
+import { templates as lavenderDreamTemplates, settings as lavenderDreamSettings } from "./lavender-dream";
+import { templates as linenCleanTemplates, settings as linenCleanSettings } from "./linen-clean";
 import { templates as luxuryGoldTemplates, settings as luxuryGoldSettings } from "./luxury-gold";
 import { templates as magazineEditorialTemplates, settings as magazineEditorialSettings } from "./magazine-editorial";
+import { templates as marbleClassicTemplates, settings as marbleClassicSettings } from "./marble-classic";
 import { templates as minimalistZenTemplates, settings as minimalistZenSettings } from "./minimalist-zen";
 import { templates as modernTemplates, settings as modernSettings } from "./modern";
+import { templates as monochromeNoirTemplates, settings as monochromeNoirSettings } from "./monochrome-noir";
+import { templates as mountainMistTemplates, settings as mountainMistSettings } from "./mountain-mist";
 import { templates as natureForestTemplates, settings as natureForestSettings } from "./nature-forest";
 import { templates as neoGeneralTemplates, settings as neoGeneralSettings } from "./neo-general";
 import { templates as neoModernTemplates, settings as neoModernSettings } from "./neo-modern";
@@ -23,8 +38,12 @@ import { templates as neoSwiftTemplates, settings as neoSwiftSettings } from "./
 import { templates as neonCyberpunkTemplates, settings as neonCyberpunkSettings } from "./neon-cyberpunk";
 import { templates as newspaperTemplates, settings as newspaperSettings } from "./newspaper";
 import { templates as oceanDeepTemplates, settings as oceanDeepSettings } from "./ocean-deep";
+import { templates as origamiPaperTemplates, settings as origamiPaperSettings } from "./origami-paper";
 import { templates as pixelRetroTemplates, settings as pixelRetroSettings } from "./pixel-retro";
+import { templates as polaroidMemoirTemplates, settings as polaroidMemoirSettings } from "./polaroid-memoir";
 import { templates as retroSynthwaveTemplates, settings as retroSynthwaveSettings } from "./retro-synthwave";
+import { templates as slateMinimalTemplates, settings as slateMinimalSettings } from "./slate-minimal";
+import { templates as stainedGlassTemplates, settings as stainedGlassSettings } from "./stained-glass";
 import { templates as standardTemplates, settings as standardSettings } from "./standard";
 import { templates as starfieldTemplates, settings as starfieldSettings } from "./starfield";
 import { templates as sunsetWarmTemplates, settings as sunsetWarmSettings } from "./sunset-warm";
@@ -32,23 +51,39 @@ import { templates as swiftTemplates, settings as swiftSettings } from "./swift"
 import { templates as terracottaTemplates, settings as terracottaSettings } from "./terracotta";
 import { templates as vintagePaperTemplates, settings as vintagePaperSettings } from "./vintage-paper";
 import { templates as watercolorTemplates, settings as watercolorSettings } from "./watercolor";
+import { templates as woodgrainCabinTemplates, settings as woodgrainCabinSettings } from "./woodgrain-cabin";
 
 
 export const allLayouts: TemplateWithData[] = [
     ...arcticIceTemplates,
+    ...artDecoTemplates,
+    ...auroraBorealisTemplates,
     ...blueprintTemplates,
     ...botanicalTemplates,
+    ...brutalistWebTemplates,
     ...candyPastelTemplates,
     ...chalkPastelTemplates,
     ...chalkboardTemplates,
+    ...comicBookTemplates,
     ...concreteIndustrialTemplates,
+    ...copperPatinaTemplates,
+    ...coralReefTemplates,
+    ...darkAcademiaTemplates,
     ...darkCorporateTemplates,
+    ...desertDuneTemplates,
+    ...electricPurpleTemplates,
     ...generalTemplates,
     ...glassmorphismTemplates,
+    ...japaneseUkiyoeTemplates,
+    ...lavenderDreamTemplates,
+    ...linenCleanTemplates,
     ...luxuryGoldTemplates,
     ...magazineEditorialTemplates,
+    ...marbleClassicTemplates,
     ...minimalistZenTemplates,
     ...modernTemplates,
+    ...monochromeNoirTemplates,
+    ...mountainMistTemplates,
     ...natureForestTemplates,
     ...neoGeneralTemplates,
     ...neoModernTemplates,
@@ -57,8 +92,12 @@ export const allLayouts: TemplateWithData[] = [
     ...neonCyberpunkTemplates,
     ...newspaperTemplates,
     ...oceanDeepTemplates,
+    ...origamiPaperTemplates,
     ...pixelRetroTemplates,
+    ...polaroidMemoirTemplates,
     ...retroSynthwaveTemplates,
+    ...slateMinimalTemplates,
+    ...stainedGlassTemplates,
     ...standardTemplates,
     ...starfieldTemplates,
     ...sunsetWarmTemplates,
@@ -66,6 +105,7 @@ export const allLayouts: TemplateWithData[] = [
     ...terracottaTemplates,
     ...vintagePaperTemplates,
     ...watercolorTemplates,
+    ...woodgrainCabinTemplates,
 ];
 
 
@@ -76,6 +116,20 @@ export const templates: TemplateLayoutsWithSettings[] = [
         description: arcticIceSettings.description,
         settings: arcticIceSettings as TemplateGroupSettings,
         layouts: arcticIceTemplates,
+    },
+    {
+        id: "art-deco",
+        name: "Art Deco",
+        description: artDecoSettings.description,
+        settings: artDecoSettings as TemplateGroupSettings,
+        layouts: artDecoTemplates,
+    },
+    {
+        id: "aurora-borealis",
+        name: "Aurora Borealis",
+        description: auroraBorealisSettings.description,
+        settings: auroraBorealisSettings as TemplateGroupSettings,
+        layouts: auroraBorealisTemplates,
     },
     {
         id: "blueprint",
@@ -90,6 +144,13 @@ export const templates: TemplateLayoutsWithSettings[] = [
         description: botanicalSettings.description,
         settings: botanicalSettings as TemplateGroupSettings,
         layouts: botanicalTemplates,
+    },
+    {
+        id: "brutalist-web",
+        name: "Brutalist Web",
+        description: brutalistWebSettings.description,
+        settings: brutalistWebSettings as TemplateGroupSettings,
+        layouts: brutalistWebTemplates,
     },
     {
         id: "candy-pastel",
@@ -113,6 +174,13 @@ export const templates: TemplateLayoutsWithSettings[] = [
         layouts: chalkboardTemplates,
     },
     {
+        id: "comic-book",
+        name: "Comic Book",
+        description: comicBookSettings.description,
+        settings: comicBookSettings as TemplateGroupSettings,
+        layouts: comicBookTemplates,
+    },
+    {
         id: "concrete-industrial",
         name: "Concrete Industrial",
         description: concreteIndustrialSettings.description,
@@ -120,11 +188,46 @@ export const templates: TemplateLayoutsWithSettings[] = [
         layouts: concreteIndustrialTemplates,
     },
     {
+        id: "copper-patina",
+        name: "Copper Patina",
+        description: copperPatinaSettings.description,
+        settings: copperPatinaSettings as TemplateGroupSettings,
+        layouts: copperPatinaTemplates,
+    },
+    {
+        id: "coral-reef",
+        name: "Coral Reef",
+        description: coralReefSettings.description,
+        settings: coralReefSettings as TemplateGroupSettings,
+        layouts: coralReefTemplates,
+    },
+    {
+        id: "dark-academia",
+        name: "Dark Academia",
+        description: darkAcademiaSettings.description,
+        settings: darkAcademiaSettings as TemplateGroupSettings,
+        layouts: darkAcademiaTemplates,
+    },
+    {
         id: "dark-corporate",
         name: "Dark Corporate",
         description: darkCorporateSettings.description,
         settings: darkCorporateSettings as TemplateGroupSettings,
         layouts: darkCorporateTemplates,
+    },
+    {
+        id: "desert-dune",
+        name: "Desert Dune",
+        description: desertDuneSettings.description,
+        settings: desertDuneSettings as TemplateGroupSettings,
+        layouts: desertDuneTemplates,
+    },
+    {
+        id: "electric-purple",
+        name: "Electric Purple",
+        description: electricPurpleSettings.description,
+        settings: electricPurpleSettings as TemplateGroupSettings,
+        layouts: electricPurpleTemplates,
     },
     {
         id: "general",
@@ -141,6 +244,27 @@ export const templates: TemplateLayoutsWithSettings[] = [
         layouts: glassmorphismTemplates,
     },
     {
+        id: "japanese-ukiyoe",
+        name: "Japanese Ukiyoe",
+        description: japaneseUkiyoeSettings.description,
+        settings: japaneseUkiyoeSettings as TemplateGroupSettings,
+        layouts: japaneseUkiyoeTemplates,
+    },
+    {
+        id: "lavender-dream",
+        name: "Lavender Dream",
+        description: lavenderDreamSettings.description,
+        settings: lavenderDreamSettings as TemplateGroupSettings,
+        layouts: lavenderDreamTemplates,
+    },
+    {
+        id: "linen-clean",
+        name: "Linen Clean",
+        description: linenCleanSettings.description,
+        settings: linenCleanSettings as TemplateGroupSettings,
+        layouts: linenCleanTemplates,
+    },
+    {
         id: "luxury-gold",
         name: "Luxury Gold",
         description: luxuryGoldSettings.description,
@@ -155,6 +279,13 @@ export const templates: TemplateLayoutsWithSettings[] = [
         layouts: magazineEditorialTemplates,
     },
     {
+        id: "marble-classic",
+        name: "Marble Classic",
+        description: marbleClassicSettings.description,
+        settings: marbleClassicSettings as TemplateGroupSettings,
+        layouts: marbleClassicTemplates,
+    },
+    {
         id: "minimalist-zen",
         name: "Minimalist Zen",
         description: minimalistZenSettings.description,
@@ -167,6 +298,20 @@ export const templates: TemplateLayoutsWithSettings[] = [
         description: modernSettings.description,
         settings: modernSettings as TemplateGroupSettings,
         layouts: modernTemplates,
+    },
+    {
+        id: "monochrome-noir",
+        name: "Monochrome Noir",
+        description: monochromeNoirSettings.description,
+        settings: monochromeNoirSettings as TemplateGroupSettings,
+        layouts: monochromeNoirTemplates,
+    },
+    {
+        id: "mountain-mist",
+        name: "Mountain Mist",
+        description: mountainMistSettings.description,
+        settings: mountainMistSettings as TemplateGroupSettings,
+        layouts: mountainMistTemplates,
     },
     {
         id: "nature-forest",
@@ -225,6 +370,13 @@ export const templates: TemplateLayoutsWithSettings[] = [
         layouts: oceanDeepTemplates,
     },
     {
+        id: "origami-paper",
+        name: "Origami Paper",
+        description: origamiPaperSettings.description,
+        settings: origamiPaperSettings as TemplateGroupSettings,
+        layouts: origamiPaperTemplates,
+    },
+    {
         id: "pixel-retro",
         name: "Pixel Retro",
         description: pixelRetroSettings.description,
@@ -232,11 +384,32 @@ export const templates: TemplateLayoutsWithSettings[] = [
         layouts: pixelRetroTemplates,
     },
     {
+        id: "polaroid-memoir",
+        name: "Polaroid Memoir",
+        description: polaroidMemoirSettings.description,
+        settings: polaroidMemoirSettings as TemplateGroupSettings,
+        layouts: polaroidMemoirTemplates,
+    },
+    {
         id: "retro-synthwave",
         name: "Retro Synthwave",
         description: retroSynthwaveSettings.description,
         settings: retroSynthwaveSettings as TemplateGroupSettings,
         layouts: retroSynthwaveTemplates,
+    },
+    {
+        id: "slate-minimal",
+        name: "Slate Minimal",
+        description: slateMinimalSettings.description,
+        settings: slateMinimalSettings as TemplateGroupSettings,
+        layouts: slateMinimalTemplates,
+    },
+    {
+        id: "stained-glass",
+        name: "Stained Glass",
+        description: stainedGlassSettings.description,
+        settings: stainedGlassSettings as TemplateGroupSettings,
+        layouts: stainedGlassTemplates,
     },
     {
         id: "standard",
@@ -286,6 +459,13 @@ export const templates: TemplateLayoutsWithSettings[] = [
         description: watercolorSettings.description,
         settings: watercolorSettings as TemplateGroupSettings,
         layouts: watercolorTemplates,
+    },
+    {
+        id: "woodgrain-cabin",
+        name: "Woodgrain Cabin",
+        description: woodgrainCabinSettings.description,
+        settings: woodgrainCabinSettings as TemplateGroupSettings,
+        layouts: woodgrainCabinTemplates,
     },
 ];
 
