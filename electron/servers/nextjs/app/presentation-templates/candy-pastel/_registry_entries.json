@@ -1,0 +1,490 @@
+[
+  {
+    "layout_id": "candy-pastel:candy-pastel-intro-slide",
+    "layout_name": "Intro Slide",
+    "layout_description": "A playful intro slide with bubbly typography, rounded shapes and candy pastel colors",
+    "template_group": "candy-pastel",
+    "file_name": "IntroSlideLayout",
+    "schema_json": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 40
+        },
+        "description": {
+          "type": "string",
+          "minLength": 10,
+          "maxLength": 150
+        },
+        "presenterName": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 50
+        },
+        "image": {
+          "type": "object",
+          "properties": {
+            "__image_url__": {
+              "type": "string"
+            },
+            "__image_prompt__": {
+              "type": "string",
+              "minLength": 10,
+              "maxLength": 50
+            }
+          },
+          "required": [
+            "__image_url__",
+            "__image_prompt__"
+          ]
+        }
+      },
+      "required": [
+        "title",
+        "description",
+        "presenterName",
+        "image"
+      ],
+      "additionalProperties": false
+    },
+    "sample_data": {}
+  },
+  {
+    "layout_id": "candy-pastel:candy-pastel-content-slide",
+    "layout_name": "Content Slide",
+    "layout_description": "A general content slide with title, body text, and 2-4 key points.",
+    "template_group": "candy-pastel",
+    "file_name": "ContentSlideLayout",
+    "schema_json": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "keyPoints": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 4,
+          "items": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 60
+              },
+              "description": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 100
+              }
+            },
+            "required": [
+              "title",
+              "description"
+            ]
+          }
+        }
+      },
+      "required": [
+        "title",
+        "description",
+        "keyPoints"
+      ],
+      "additionalProperties": false
+    },
+    "sample_data": {}
+  },
+  {
+    "layout_id": "candy-pastel:candy-pastel-bullet-icons-slide",
+    "layout_name": "Bullet Points with Icons",
+    "layout_description": "A playful pastel slide with title, description, and bullet points each paired with an icon in candy-themed styling.",
+    "template_group": "candy-pastel",
+    "file_name": "BulletIconsSlideLayout",
+    "schema_json": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 40
+        },
+        "description": {
+          "type": "string",
+          "minLength": 10,
+          "maxLength": 150
+        },
+        "bulletPoints": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 4,
+          "items": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string",
+                "minLength": 2,
+                "maxLength": 60
+              },
+              "description": {
+                "type": "string",
+                "minLength": 10,
+                "maxLength": 100
+              },
+              "icon": {
+                "type": "object",
+                "properties": {
+                  "__icon_url__": {
+                    "type": "string"
+                  },
+                  "__icon_query__": {
+                    "type": "string",
+                    "minLength": 5,
+                    "maxLength": 20
+                  }
+                },
+                "required": [
+                  "__icon_url__",
+                  "__icon_query__"
+                ]
+              }
+            },
+            "required": [
+              "title",
+              "description",
+              "icon"
+            ]
+          }
+        }
+      },
+      "required": [
+        "title",
+        "description",
+        "bulletPoints"
+      ],
+      "additionalProperties": false
+    },
+    "sample_data": {}
+  },
+  {
+    "layout_id": "candy-pastel:candy-pastel-metrics-slide",
+    "layout_name": "Metrics Slide",
+    "layout_description": "A playful pastel-themed slide for showcasing key numeric metrics with bubbly typography and rounded shapes.",
+    "template_group": "candy-pastel",
+    "file_name": "MetricsSlideLayout",
+    "schema_json": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 40
+        },
+        "metrics": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 4,
+          "items": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string",
+                "minLength": 2,
+                "maxLength": 50
+              },
+              "value": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 10
+              },
+              "description": {
+                "type": "string",
+                "minLength": 10,
+                "maxLength": 150
+              }
+            },
+            "required": [
+              "label",
+              "value",
+              "description"
+            ]
+          }
+        }
+      },
+      "required": [
+        "title",
+        "metrics"
+      ],
+      "additionalProperties": false
+    },
+    "sample_data": {}
+  },
+  {
+    "layout_id": "candy-pastel:candy-pastel-image-text-slide",
+    "layout_name": "Image with Text",
+    "layout_description": "A split layout with an image on one side and text content on the other.",
+    "template_group": "candy-pastel",
+    "file_name": "ImageTextSlideLayout",
+    "schema_json": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "image": {
+          "type": "object",
+          "properties": {
+            "__image_url__": {
+              "type": "string"
+            },
+            "__image_prompt__": {
+              "type": "string",
+              "minLength": 10,
+              "maxLength": 50
+            }
+          },
+          "required": [
+            "__image_url__",
+            "__image_prompt__"
+          ]
+        }
+      },
+      "required": [
+        "title",
+        "description",
+        "image"
+      ],
+      "additionalProperties": false
+    },
+    "sample_data": {}
+  },
+  {
+    "layout_id": "candy-pastel:candy-pastel-quote-slide",
+    "layout_name": "Quote Slide",
+    "layout_description": "A playful pastel-themed slide featuring a prominent quote with author attribution and background image with bubbly typography.",
+    "template_group": "candy-pastel",
+    "file_name": "QuoteSlideLayout",
+    "schema_json": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "type": "object",
+      "properties": {
+        "heading": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 30
+        },
+        "quote": {
+          "type": "string",
+          "minLength": 10,
+          "maxLength": 200
+        },
+        "author": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 50
+        },
+        "backgroundImage": {
+          "type": "object",
+          "properties": {
+            "__image_url__": {
+              "type": "string"
+            },
+            "__image_prompt__": {
+              "type": "string",
+              "minLength": 10,
+              "maxLength": 50
+            }
+          },
+          "required": [
+            "__image_url__",
+            "__image_prompt__"
+          ]
+        }
+      },
+      "required": [
+        "heading",
+        "quote",
+        "author",
+        "backgroundImage"
+      ],
+      "additionalProperties": false
+    },
+    "sample_data": {}
+  },
+  {
+    "layout_id": "candy-pastel:candy-pastel-timeline-slide",
+    "layout_name": "Timeline Slide",
+    "layout_description": "A playful timeline layout with pastel colors, rounded shapes, and bubbly typography showing sequential milestones",
+    "template_group": "candy-pastel",
+    "file_name": "TimelineSlideLayout",
+    "schema_json": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 30
+        },
+        "milestones": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 6,
+          "items": {
+            "type": "object",
+            "properties": {
+              "year": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 10
+              },
+              "title": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 40
+              },
+              "description": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 100
+              }
+            },
+            "required": [
+              "year",
+              "title",
+              "description"
+            ]
+          }
+        }
+      },
+      "required": [
+        "title",
+        "milestones"
+      ],
+      "additionalProperties": false
+    },
+    "sample_data": {}
+  },
+  {
+    "layout_id": "candy-pastel:candy-pastel-team-slide",
+    "layout_name": "Team Slide",
+    "layout_description": "A playful team showcase with pastel colors and rounded bubbly design",
+    "template_group": "candy-pastel",
+    "file_name": "TeamSlideLayout",
+    "schema_json": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 40
+        },
+        "members": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 4,
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "minLength": 2,
+                "maxLength": 40
+              },
+              "role": {
+                "type": "string",
+                "minLength": 2,
+                "maxLength": 40
+              },
+              "image": {
+                "type": "object",
+                "properties": {
+                  "__image_url__": {
+                    "type": "string"
+                  },
+                  "__image_prompt__": {
+                    "type": "string",
+                    "minLength": 10,
+                    "maxLength": 50
+                  }
+                },
+                "required": [
+                  "__image_url__",
+                  "__image_prompt__"
+                ]
+              }
+            },
+            "required": [
+              "name",
+              "role",
+              "image"
+            ]
+          }
+        }
+      },
+      "required": [
+        "title",
+        "members"
+      ],
+      "additionalProperties": false
+    },
+    "sample_data": {}
+  },
+  {
+    "layout_id": "candy-pastel:candy-pastel-closing-slide",
+    "layout_name": "Closing Slide",
+    "layout_description": "A thank-you or call-to-action ending slide",
+    "template_group": "candy-pastel",
+    "file_name": "ClosingSlideLayout",
+    "schema_json": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 5,
+          "maxLength": 40
+        },
+        "subtitle": {
+          "type": "string",
+          "minLength": 10,
+          "maxLength": 100
+        },
+        "contactInfo": {
+          "type": "string",
+          "minLength": 10,
+          "maxLength": 100
+        }
+      },
+      "required": [
+        "title",
+        "subtitle",
+        "contactInfo"
+      ],
+      "additionalProperties": false
+    },
+    "sample_data": {}
+  }
+]

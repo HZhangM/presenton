@@ -91,96 +91,63 @@ const ChalkboardTimelineSlide: React.FC<{ data: Partial<z.infer<typeof Schema>> 
                     />
                 </div>
 
-                {/* Timeline Container */}
-                <div className="absolute top-32 left-8 right-8 bottom-8">
-                    {/* Main Timeline Line */}
-                    <div className="relative h-full">
-                        <div 
-                            className="absolute left-16 top-8 bottom-8 w-0.5"
-                            style={{
-                                border: 'dashed 2px rgba(255,255,255,0.3)',
-                                borderWidth: '0 0 0 2px'
-                            }}
-                        />
+                {/* Timeline Content - Horizontal Layout */}
+                <div className="absolute left-8 right-8 top-36 bottom-12">
+                    {/* Horizontal timeline line (dashed) */}
+                    <div className="absolute left-0 right-0 top-[14px] h-0"
+                         style={{
+                             borderTop: 'dashed 2px rgba(255,255,255,0.3)',
+                         }}></div>
 
-                        {/* Milestone Items */}
-                        {milestones && milestones.map((milestone, index) => {
-                            const isLeft = index % 2 === 0;
-                            const topPosition = 60 + (index * 120);
-                            
-                            return (
-                                <div 
-                                    key={index}
-                                    className="absolute flex items-start"
-                                    style={{ top: `${topPosition}px` }}
-                                >
-                                    {/* Year Badge */}
-                                    <div 
-                                        className="relative z-10 w-20 h-12 flex items-center justify-center rounded"
-                                        style={{
-                                            border: '1px dashed rgba(255,255,255,0.2)',
-                                            background: 'rgba(255,255,255,0.05)',
-                                            borderRadius: '4px'
-                                        }}
-                                    >
-                                        <span 
-                                            className="text-lg font-bold"
-                                            style={{ 
-                                                color: 'var(--primary-color, #f2c94c)',
-                                                fontFamily: 'var(--body-font-family, Patrick Hand)'
-                                            }}
-                                        >
-                                            {milestone.year}
-                                        </span>
-                                    </div>
+                    <div className="flex gap-4 h-full">
+                        {milestones && milestones.map((milestone, index) => (
+                            <div key={index} className="flex-1 min-w-0 relative pt-10">
+                                {/* Timeline dot */}
+                                <div className="absolute top-[6px] left-4 w-4 h-4 rounded-full border-2"
+                                     style={{
+                                         backgroundColor: 'var(--primary-color, #f2c94c)',
+                                         borderColor: 'var(--background-text, #e8e8d0)',
+                                     }}></div>
 
-                                    {/* Timeline Dot */}
-                                    <div 
-                                        className="absolute w-4 h-4 rounded-full border-2"
-                                        style={{
-                                            left: '58px',
-                                            top: '16px',
-                                            backgroundColor: 'var(--primary-color, #f2c94c)',
-                                            borderColor: 'var(--background-text, #e8e8d0)',
-                                            transform: 'translateX(-50%)'
-                                        }}
-                                    />
-
-                                    {/* Content Card */}
-                                    <div 
-                                        className="ml-8 p-4 max-w-md"
-                                        style={{
-                                            border: '1px dashed rgba(255,255,255,0.2)',
-                                            background: 'rgba(255,255,255,0.05)',
-                                            borderRadius: '4px',
-                                            marginLeft: isLeft ? '80px' : '0px',
-                                            marginRight: isLeft ? '0px' : '80px'
-                                        }}
-                                    >
-                                        <h3 
-                                            className="text-xl font-bold mb-2"
-                                            style={{ 
-                                                color: 'var(--background-text, #e8e8d0)',
-                                                borderBottom: '2px wavy rgba(255,255,255,0.4)',
-                                                paddingBottom: '4px'
-                                            }}
-                                        >
-                                            {milestone.title}
-                                        </h3>
-                                        <p 
-                                            className="text-sm leading-relaxed"
-                                            style={{ 
-                                                color: 'var(--background-text, #e8e8d0)',
-                                                fontFamily: 'var(--body-font-family, Patrick Hand)',
-                                                opacity: 0.9
-                                            }}
-                                        >
-                                            {milestone.description}
-                                        </p>
-                                    </div>
+                                {/* Year badge */}
+                                <div className="inline-block px-2 py-0.5 text-xs font-bold tracking-wide mb-2"
+                                     style={{
+                                         border: '1px dashed rgba(255,255,255,0.2)',
+                                         background: 'rgba(255,255,255,0.05)',
+                                         borderRadius: '4px',
+                                         color: 'var(--primary-color, #f2c94c)',
+                                         fontFamily: 'var(--body-font-family, Patrick Hand)'
+                                     }}>
+                                    {milestone.year}
                                 </div>
-                            );
-                        })}
+
+                                {/* Title */}
+                                <h3 className="text-lg font-bold mb-1 leading-snug"
+                                    style={{
+                                        color: 'var(--background-text, #e8e8d0)',
+                                        borderBottom: '2px wavy rgba(255,255,255,0.4)',
+                                        paddingBottom: '4px'
+                                    }}>
+                                    {milestone.title}
+                                </h3>
+
+                                {/* Description */}
+                                <p className="text-sm leading-relaxed mt-2"
+                                   style={{
+                                       color: 'var(--background-text, #e8e8d0)',
+                                       fontFamily: 'var(--body-font-family, Patrick Hand)',
+                                       opacity: 0.9,
+                                   }}>
+                                    {milestone.description}
+                                </p>
+
+                                {/* Column divider */}
+                                {index < (milestones?.length || 0) - 1 && (
+                                    <div className="absolute right-0 top-10 bottom-0 w-px"
+                                         style={{ borderRight: 'dashed 1px rgba(255,255,255,0.2)' }}></div>
+                                )}
+                            </div>
+                        ))}
                     </div>
                 </div>
 

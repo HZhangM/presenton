@@ -1,0 +1,489 @@
+[
+  {
+    "layout_id": "pixel-retro:pixel-retro-intro-slide",
+    "layout_name": "Intro Slide",
+    "layout_description": "A retro gaming pixel art style intro slide with 8-bit colors and blocky pixel typography.",
+    "template_group": "pixel-retro",
+    "file_name": "IntroSlideLayout",
+    "schema_json": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 40
+        },
+        "description": {
+          "type": "string",
+          "minLength": 10,
+          "maxLength": 150
+        },
+        "presenterName": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 50
+        },
+        "image": {
+          "type": "object",
+          "properties": {
+            "__image_url__": {
+              "type": "string"
+            },
+            "__image_prompt__": {
+              "type": "string",
+              "minLength": 10,
+              "maxLength": 50
+            }
+          },
+          "required": [
+            "__image_url__",
+            "__image_prompt__"
+          ]
+        }
+      },
+      "required": [
+        "title",
+        "description",
+        "presenterName",
+        "image"
+      ],
+      "additionalProperties": false
+    },
+    "sample_data": {}
+  },
+  {
+    "layout_id": "pixel-retro:pixel-retro-content-slide",
+    "layout_name": "Content Slide",
+    "layout_description": "A general content slide with title, body text, and 2-4 key points in retro gaming pixel art style",
+    "template_group": "pixel-retro",
+    "file_name": "ContentSlideLayout",
+    "schema_json": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 5,
+          "maxLength": 40
+        },
+        "description": {
+          "type": "string",
+          "minLength": 10,
+          "maxLength": 200
+        },
+        "keyPoints": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 4,
+          "items": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string",
+                "minLength": 5,
+                "maxLength": 60
+              },
+              "description": {
+                "type": "string",
+                "minLength": 10,
+                "maxLength": 100
+              }
+            },
+            "required": [
+              "title",
+              "description"
+            ]
+          }
+        }
+      },
+      "required": [
+        "title",
+        "description",
+        "keyPoints"
+      ],
+      "additionalProperties": false
+    },
+    "sample_data": {}
+  },
+  {
+    "layout_id": "pixel-retro:pixel-retro-bullet-icons-slide",
+    "layout_name": "Bullet Points with Icons",
+    "layout_description": "A retro gaming pixel art style slide with title, description, and bullet points paired with icons.",
+    "template_group": "pixel-retro",
+    "file_name": "BulletIconsSlideLayout",
+    "schema_json": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 40
+        },
+        "description": {
+          "type": "string",
+          "maxLength": 150
+        },
+        "bulletPoints": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 4,
+          "items": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string",
+                "minLength": 2,
+                "maxLength": 60
+              },
+              "description": {
+                "type": "string",
+                "minLength": 10,
+                "maxLength": 100
+              },
+              "icon": {
+                "type": "object",
+                "properties": {
+                  "__icon_url__": {
+                    "type": "string"
+                  },
+                  "__icon_query__": {
+                    "type": "string",
+                    "minLength": 5,
+                    "maxLength": 20
+                  }
+                },
+                "required": [
+                  "__icon_url__",
+                  "__icon_query__"
+                ]
+              }
+            },
+            "required": [
+              "title",
+              "description",
+              "icon"
+            ]
+          }
+        }
+      },
+      "required": [
+        "title",
+        "description",
+        "bulletPoints"
+      ],
+      "additionalProperties": false
+    },
+    "sample_data": {}
+  },
+  {
+    "layout_id": "pixel-retro:pixel-retro-metrics-slide",
+    "layout_name": "Metrics Slide",
+    "layout_description": "A retro gaming pixel art style slide for showcasing key numeric metrics with 8-bit colors and blocky pixel typography",
+    "template_group": "pixel-retro",
+    "file_name": "MetricsSlideLayout",
+    "schema_json": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 40
+        },
+        "metrics": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 4,
+          "items": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string",
+                "minLength": 2,
+                "maxLength": 50
+              },
+              "value": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 10
+              },
+              "description": {
+                "type": "string",
+                "minLength": 10,
+                "maxLength": 150
+              }
+            },
+            "required": [
+              "label",
+              "value",
+              "description"
+            ]
+          }
+        }
+      },
+      "required": [
+        "title",
+        "metrics"
+      ],
+      "additionalProperties": false
+    },
+    "sample_data": {}
+  },
+  {
+    "layout_id": "pixel-retro:pixel-retro-image-text-slide",
+    "layout_name": "Image with Text",
+    "layout_description": "A split layout with an image on one side and text content on the other, styled with retro gaming pixel art aesthetics.",
+    "template_group": "pixel-retro",
+    "file_name": "ImageTextSlideLayout",
+    "schema_json": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "image": {
+          "type": "object",
+          "properties": {
+            "__image_url__": {
+              "type": "string"
+            },
+            "__image_prompt__": {
+              "type": "string",
+              "minLength": 10,
+              "maxLength": 50
+            }
+          },
+          "required": [
+            "__image_url__",
+            "__image_prompt__"
+          ]
+        }
+      },
+      "required": [
+        "title",
+        "description",
+        "image"
+      ],
+      "additionalProperties": false
+    },
+    "sample_data": {}
+  },
+  {
+    "layout_id": "pixel-retro:pixel-retro-quote-slide",
+    "layout_name": "Quote Slide",
+    "layout_description": "A slide featuring a prominent quote with author attribution and background image in retro gaming pixel art style.",
+    "template_group": "pixel-retro",
+    "file_name": "QuoteSlideLayout",
+    "schema_json": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "type": "object",
+      "properties": {
+        "heading": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 30
+        },
+        "quote": {
+          "type": "string",
+          "minLength": 10,
+          "maxLength": 200
+        },
+        "author": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 50
+        },
+        "backgroundImage": {
+          "type": "object",
+          "properties": {
+            "__image_url__": {
+              "type": "string"
+            },
+            "__image_prompt__": {
+              "type": "string",
+              "minLength": 10,
+              "maxLength": 50
+            }
+          },
+          "required": [
+            "__image_url__",
+            "__image_prompt__"
+          ]
+        }
+      },
+      "required": [
+        "heading",
+        "quote",
+        "author",
+        "backgroundImage"
+      ],
+      "additionalProperties": false
+    },
+    "sample_data": {}
+  },
+  {
+    "layout_id": "pixel-retro:pixel-retro-timeline-slide",
+    "layout_name": "Timeline Slide",
+    "layout_description": "A retro gaming timeline layout with 8-bit pixel styling and terminal colors.",
+    "template_group": "pixel-retro",
+    "file_name": "TimelineSlideLayout",
+    "schema_json": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 30
+        },
+        "milestones": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 6,
+          "items": {
+            "type": "object",
+            "properties": {
+              "year": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 10
+              },
+              "title": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 40
+              },
+              "description": {
+                "type": "string",
+                "minLength": 10,
+                "maxLength": 100
+              }
+            },
+            "required": [
+              "year",
+              "title",
+              "description"
+            ]
+          }
+        }
+      },
+      "required": [
+        "title",
+        "milestones"
+      ],
+      "additionalProperties": false
+    },
+    "sample_data": {}
+  },
+  {
+    "layout_id": "pixel-retro:pixel-retro-team-slide",
+    "layout_name": "Team Slide",
+    "layout_description": "A retro gaming pixel art style team slide showcasing team members with 8-bit aesthetic",
+    "template_group": "pixel-retro",
+    "file_name": "TeamSlideLayout",
+    "schema_json": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 40
+        },
+        "members": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 4,
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "minLength": 2,
+                "maxLength": 40
+              },
+              "role": {
+                "type": "string",
+                "minLength": 2,
+                "maxLength": 40
+              },
+              "image": {
+                "type": "object",
+                "properties": {
+                  "__image_url__": {
+                    "type": "string"
+                  },
+                  "__image_prompt__": {
+                    "type": "string",
+                    "minLength": 10,
+                    "maxLength": 50
+                  }
+                },
+                "required": [
+                  "__image_url__",
+                  "__image_prompt__"
+                ]
+              }
+            },
+            "required": [
+              "name",
+              "role",
+              "image"
+            ]
+          }
+        }
+      },
+      "required": [
+        "title",
+        "members"
+      ],
+      "additionalProperties": false
+    },
+    "sample_data": {}
+  },
+  {
+    "layout_id": "pixel-retro:pixel-retro-closing-slide",
+    "layout_name": "Closing Slide",
+    "layout_description": "A thank-you or call-to-action ending slide",
+    "template_group": "pixel-retro",
+    "file_name": "ClosingSlideLayout",
+    "schema_json": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40
+        },
+        "subtitle": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "contactInfo": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        }
+      },
+      "required": [
+        "title",
+        "subtitle",
+        "contactInfo"
+      ],
+      "additionalProperties": false
+    },
+    "sample_data": {}
+  }
+]

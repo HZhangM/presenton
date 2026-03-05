@@ -65,9 +65,11 @@ const ChalkboardTeamSlide: React.FC<TeamSlideLayoutProps> = ({ data: slideData }
 
     const getGridClasses = (count: number) => {
         if (count <= 2) {
-            return 'grid-cols-2 gap-12'
+            return 'grid-cols-2 gap-4'
+        } else if (count === 3) {
+            return 'grid-cols-3 gap-4'
         } else {
-            return 'grid-cols-2 gap-8'
+            return 'grid-cols-4 gap-4'
         }
     }
 
@@ -118,11 +120,11 @@ const ChalkboardTeamSlide: React.FC<TeamSlideLayoutProps> = ({ data: slideData }
                 </div>
 
                 {/* Main Content */}
-                <div className="relative z-10 flex flex-col h-full px-8 sm:px-12 lg:px-20 pt-20 pb-12">
+                <div className="relative z-10 flex flex-col h-full px-8 sm:px-12 lg:px-20 pt-14 pb-10">
                     {/* Title Section */}
-                    <div className="text-center mb-12">
-                        <h1 
-                            className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-4" 
+                    <div className="text-center mb-8">
+                        <h1
+                            className="text-5xl font-bold mb-4" 
                             style={{ 
                                 color: "var(--background-text, #e8e8d0)",
                                 fontFamily: "var(--heading-font-family, Caveat)"
@@ -145,10 +147,10 @@ const ChalkboardTeamSlide: React.FC<TeamSlideLayoutProps> = ({ data: slideData }
                     <div className="flex-1 flex items-center justify-center">
                         <div className={`grid ${getGridClasses(members.length)} w-full max-w-4xl`}>
                             {members.map((member, index) => (
-                                <div key={index} className="text-center space-y-4">
+                                <div key={index} className="text-center space-y-2">
                                     {/* Member Photo Card */}
-                                    <div 
-                                        className="w-48 h-48 mx-auto p-3 relative"
+                                    <div
+                                        className="w-28 h-28 mx-auto p-2 relative"
                                         style={{
                                             border: "1px dashed rgba(255,255,255,0.2)",
                                             background: "rgba(255,255,255,0.05)",
@@ -165,9 +167,9 @@ const ChalkboardTeamSlide: React.FC<TeamSlideLayoutProps> = ({ data: slideData }
                                     </div>
 
                                     {/* Member Info */}
-                                    <div className="space-y-2">
-                                        <h3 
-                                            className="text-3xl font-bold" 
+                                    <div className="space-y-1">
+                                        <h3
+                                            className="text-base font-bold" 
                                             style={{ 
                                                 color: "var(--background-text, #e8e8d0)",
                                                 fontFamily: "var(--heading-font-family, Caveat)"
@@ -176,8 +178,8 @@ const ChalkboardTeamSlide: React.FC<TeamSlideLayoutProps> = ({ data: slideData }
                                             {member.name}
                                         </h3>
                                         <div className="relative">
-                                            <p 
-                                                className="text-xl font-normal" 
+                                            <p
+                                                className="text-sm font-normal" 
                                                 style={{ 
                                                     color: "var(--primary-color, #f2c94c)",
                                                     fontFamily: "var(--body-font-family, Patrick Hand)"

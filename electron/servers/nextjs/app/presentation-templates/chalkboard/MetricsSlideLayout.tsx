@@ -57,7 +57,7 @@ const ChalkboardMetricsSlideLayout: React.FC<MetricsSlideLayoutProps> = ({ data:
         } else if (count === 3) {
             return 'grid grid-cols-3'
         } else if (count === 4) {
-            return 'grid grid-cols-2'
+            return 'grid grid-cols-4'
         } else {
             return 'grid grid-cols-2'
         }
@@ -100,7 +100,7 @@ const ChalkboardMetricsSlideLayout: React.FC<MetricsSlideLayoutProps> = ({ data:
 
                 {/* Main Content */}
                 <div className="relative z-10 px-8 sm:px-12 lg:px-20 pt-16 pb-12 flex-1 flex flex-col justify-center">
-                    <div className="space-y-16">
+                    <div className="space-y-8">
                         {/* Title with hand-drawn underline */}
                         <div className="text-center">
                             <h1 
@@ -109,7 +109,7 @@ const ChalkboardMetricsSlideLayout: React.FC<MetricsSlideLayoutProps> = ({ data:
                                     borderBottom: "3px solid var(--primary-color, #f2c94c)",
                                     borderBottomStyle: "wavy"
                                 }} 
-                                className="text-5xl sm:text-6xl lg:text-7xl font-bold inline-block pb-2"
+                                className="text-5xl font-bold inline-block pb-2"
                             >
                                 {slideData?.title || 'Key Metrics'}
                             </h1>
@@ -117,7 +117,7 @@ const ChalkboardMetricsSlideLayout: React.FC<MetricsSlideLayoutProps> = ({ data:
 
                         {/* Metrics Section */}
                         <div className="flex justify-center">
-                            <div className={`${getLayoutClasses(metrics.length)} gap-8 lg:gap-12 place-content-center place-items-center w-full max-w-6xl`}>
+                            <div className={`${getLayoutClasses(metrics.length)} gap-6 place-content-center place-items-center w-full max-w-6xl`}>
                                 {metrics.map((metric, index) => (
                                     <div key={index} className="text-center space-y-6">
                                         {/* Metric Value - Large chalk number */}
@@ -126,7 +126,7 @@ const ChalkboardMetricsSlideLayout: React.FC<MetricsSlideLayoutProps> = ({ data:
                                                 color: "var(--primary-color, #f2c94c)",
                                                 fontFamily: "var(--heading-font-family, Caveat)"
                                             }} 
-                                            className="text-6xl sm:text-7xl lg:text-8xl font-bold"
+                                            className="text-4xl sm:text-5xl lg:text-5xl font-bold"
                                         >
                                             {metric.value}
                                         </div>

@@ -107,71 +107,57 @@ const WatercolorTimelineSlide: React.FC<{ data: Partial<z.infer<typeof Schema>> 
                     />
                 </div>
 
-                {/* Timeline container */}
-                <div className="absolute top-48 left-16 right-16 bottom-16">
-                    <div className="relative h-full">
-                        {/* Central timeline line */}
-                        <div 
-                            className="absolute left-8 top-8 bottom-8 w-px"
-                            style={{ 
-                                background: `linear-gradient(to bottom, transparent, var(--stroke, rgba(124, 92, 191, 0.25)), transparent)`
-                            }}
-                        />
-                        
-                        {/* Timeline items */}
-                        <div className="space-y-8 relative">
-                            {milestones && milestones.map((milestone, index) => (
-                                <div key={index} className="relative flex items-start gap-8">
-                                    {/* Timeline dot */}
-                                    <div 
-                                        className="w-4 h-4 rounded-full relative z-10 mt-8"
-                                        style={{ backgroundColor: 'var(--primary-color, #7c5cbf)' }}
-                                    />
-                                    
-                                    {/* Content card */}
-                                    <div 
-                                        className="flex-1 p-6 rounded-2xl"
-                                        style={{
-                                            backdropFilter: "blur(12px)",
-                                            background: "var(--card-color, rgba(255, 255, 255, 0.65))",
-                                            border: "1px solid rgba(255, 255, 255, 0.4)",
-                                            boxShadow: "0 4px 24px rgba(0, 0, 0, 0.06)"
-                                        }}
-                                    >
-                                        <div className="flex items-baseline gap-4 mb-3">
-                                            <span 
-                                                className="text-lg font-bold px-3 py-1 rounded-full"
-                                                style={{ 
-                                                    backgroundColor: 'var(--primary-color, #7c5cbf)',
-                                                    color: 'var(--primary-text, #ffffff)',
-                                                    fontFamily: "var(--body-font-family, Lora)"
-                                                }}
-                                            >
-                                                {milestone.year}
-                                            </span>
-                                            <h3 
-                                                className="text-xl font-bold"
-                                                style={{ 
-                                                    color: 'var(--background-text, #2d2d3d)',
-                                                    fontFamily: "var(--heading-font-family, Playfair Display)"
-                                                }}
-                                            >
-                                                {milestone.title}
-                                            </h3>
-                                        </div>
-                                        <p 
-                                            className="text-base leading-relaxed"
-                                            style={{ 
-                                                color: 'var(--background-text, #2d2d3d)',
-                                                fontFamily: "var(--body-font-family, Lora)"
-                                            }}
-                                        >
-                                            {milestone.description}
-                                        </p>
-                                    </div>
+                {/* Timeline Content - Horizontal Layout */}
+                <div className="absolute left-16 right-16 top-48 bottom-16">
+                    {/* Horizontal timeline line */}
+                    <div className="absolute left-0 right-0 top-[14px] h-px"
+                         style={{
+                             background: 'linear-gradient(90deg, transparent, var(--stroke, rgba(124, 92, 191, 0.25)), transparent)'
+                         }}></div>
+
+                    <div className="flex gap-4 h-full">
+                        {milestones && milestones.map((milestone, index) => (
+                            <div key={index} className="flex-1 min-w-0 relative pt-10">
+                                {/* Timeline dot */}
+                                <div className="absolute top-[7px] left-4 w-4 h-4 rounded-full z-10"
+                                     style={{ backgroundColor: 'var(--primary-color, #7c5cbf)' }}></div>
+
+                                {/* Year badge */}
+                                <div className="inline-block px-2 py-0.5 text-xs font-bold rounded-full mb-2"
+                                     style={{
+                                         backgroundColor: 'var(--primary-color, #7c5cbf)',
+                                         color: 'var(--primary-text, #ffffff)',
+                                         fontFamily: "var(--body-font-family, Lora)"
+                                     }}>
+                                    {milestone.year}
                                 </div>
-                            ))}
-                        </div>
+
+                                {/* Title */}
+                                <h3 className="text-lg font-bold mb-1 leading-snug"
+                                    style={{
+                                        color: 'var(--background-text, #2d2d3d)',
+                                        fontFamily: "var(--heading-font-family, Playfair Display)"
+                                    }}>
+                                    {milestone.title}
+                                </h3>
+
+                                {/* Description */}
+                                <p className="text-sm leading-relaxed"
+                                   style={{
+                                       color: 'var(--background-text, #2d2d3d)',
+                                       fontFamily: "var(--body-font-family, Lora)",
+                                       opacity: 0.85,
+                                   }}>
+                                    {milestone.description}
+                                </p>
+
+                                {/* Column divider */}
+                                {index < (milestones?.length || 0) - 1 && (
+                                    <div className="absolute right-0 top-10 bottom-0 w-px"
+                                         style={{ backgroundColor: 'var(--stroke, rgba(124, 92, 191, 0.25))' }}></div>
+                                )}
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>
