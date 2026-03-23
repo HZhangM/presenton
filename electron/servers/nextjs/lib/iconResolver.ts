@@ -175,9 +175,13 @@ export function resolveAllIcons<T>(data: T): T {
         (!obj.__icon_url__ ||
             obj.__icon_url__ === "/static/icons/placeholder.svg")
     ) {
-        const url = resolveIconQuery(obj.__icon_query__ as string);
+        const query = obj.__icon_query__ as string;
+        const url = resolveIconQuery(query);
         if (url) {
             obj.__icon_url__ = url;
+            console.log(`[iconResolver] ✓ "${query}" → resolved`);
+        } else {
+            console.warn(`[iconResolver] ✗ "${query}" → no icon found`);
         }
     }
 
