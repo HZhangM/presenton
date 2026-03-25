@@ -117,68 +117,68 @@ const BulletPointsWithIconsSlideLayout: React.FC<BulletPointsWithIconsSlideLayou
                 <div className="absolute bottom-32 left-16 w-32 h-px" style={{ background: 'var(--stroke, rgba(0, 0, 0, 0.1))' }}></div>
 
                 {/* Main Content */}
-                <div className="flex flex-col h-full px-16 pt-24 pb-16">
+                <div className="flex flex-col h-full px-16 pt-14 pb-8 overflow-hidden">
                     {/* Title Section */}
-                    <div className="mb-12 max-w-2xl">
-                        <h1 
-                            style={{ 
+                    <div className="mb-2 max-w-2xl flex-shrink-0">
+                        <h1
+                            style={{
                                 color: "var(--background-text, #2d2d2d)",
                                 fontFamily: "var(--heading-font-family, Noto Serif JP)"
-                            }} 
-                            className="text-5xl font-normal leading-tight mb-8"
+                            }}
+                            className="text-3xl font-normal leading-tight mb-4"
                         >
                             {slideData?.title || 'Essential Elements'}
                         </h1>
-                        
+
                         {/* Divider */}
-                        <div className="flex justify-center mb-8">
+                        <div className="flex justify-center mb-4">
                             <div className="w-16 h-px" style={{ background: 'var(--stroke, rgba(0, 0, 0, 0.1))' }}></div>
                         </div>
 
-                        <p 
-                            style={{ 
+                        <p
+                            style={{
                                 color: "var(--background-text, #2d2d2d)",
                                 fontFamily: "var(--body-font-family, Noto Sans JP)"
-                            }} 
-                            className="text-lg font-light leading-relaxed"
+                            }}
+                            className="text-base font-light leading-relaxed"
                         >
                             {slideData?.description || 'The path to clarity begins with understanding the fundamental principles that guide thoughtful design and purposeful action.'}
                         </p>
                     </div>
 
                     {/* Bullet Points */}
-                    <div className="flex-1 flex flex-col justify-center">
-                        <div className="space-y-12 max-w-4xl">
+                    <div className="flex-1 flex flex-col justify-center min-h-0">
+                        <div className="space-y-3 max-w-4xl">
                             {bulletPoints.map((bullet, index) => (
                                 <div key={index} className="flex items-start space-x-8">
                                     {/* Icon */}
-                                    <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center">
+                                    <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center">
                                         <RemoteSvgIcon
                                             url={bullet.icon?.__icon_url__}
                                             strokeColor="var(--primary-color, #1a1a1a)"
-                                            className="w-8 h-8"
+                                            className="w-7 h-7"
                                             color="var(--primary-color, #1a1a1a)"
                                             title={bullet.icon?.__icon_query__}
                                         />
                                     </div>
 
                                     {/* Content */}
-                                    <div className="flex-1 pt-1">
-                                        <h3 
-                                            style={{ 
+                                    <div className="flex-1 pt-0.5">
+                                        <h3
+                                            style={{
                                                 color: "var(--background-text, #2d2d2d)",
                                                 fontFamily: "var(--heading-font-family, Noto Serif JP)"
-                                            }} 
-                                            className="text-2xl font-normal mb-4"
+                                            }}
+                                            className="text-base font-normal mb-1"
                                         >
                                             {bullet.title}
                                         </h3>
-                                        <p 
-                                            style={{ 
+                                        <p
+                                            style={{
                                                 color: "var(--background-text, #2d2d2d)",
                                                 fontFamily: "var(--body-font-family, Noto Sans JP)"
-                                            }} 
-                                            className="text-base font-light leading-relaxed max-w-xl"
+                                            }}
+                                            className="text-sm font-light leading-relaxed max-w-xl"
                                         >
                                             {bullet.description}
                                         </p>
