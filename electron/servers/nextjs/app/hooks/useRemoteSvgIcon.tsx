@@ -89,7 +89,7 @@ function makeCacheKey(url: string, options: RemoteSvgOptions): string {
     `sc=${options.strokeColor || ""}`,
     `fc=${options.fillColor || ""}`,
     `cls=${options.className || ""}`,
-    
+
   ].join("|");
 }
 
@@ -225,19 +225,27 @@ export const RemoteSvgIcon: React.FC<{
     { strokeColor, fillColor, className, title, color },
   );
 
-  // Data URIs: render as <img> directly (SSR-safe)
+  // Data URIs: decode and render inline so fill="currentColor" inherits CSS color
   if (isDataUri) {
-    const isWhite = color === "#ffffff" || color === "white"
-      || (typeof color === "string" && color.includes("#ffffff"));
+    const decoded = decodeDataUri(url!);
+    if (decoded) {
+      return (
+        <span
+          role={title ? "img" : undefined}
+          aria-label={title}
+          className={className}
+          dangerouslySetInnerHTML={{ __html: decoded }}
+          style={{ display: "inline-block", color: color }}
+        />
+      );
+    }
+    // Fallback: render as <img> if decode fails
     return (
       <img
         src={url}
         className={className}
         alt={title || ""}
-        style={{
-          display: "inline-block",
-          filter: `brightness(0) saturate(100%) invert(${isWhite ? "1" : "0"})`,
-        }}
+        style={{ display: "inline-block" }}
       />
     );
   }
