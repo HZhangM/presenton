@@ -16,7 +16,10 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import React from "react";
 import ReactDOMServer from "react-dom/server";
 import { getLayoutByLayoutId, allLayouts } from "@/app/presentation-templates";
-import { resolveAllIcons } from "@/lib/iconResolver";
+import { resolveAllIcons, preloadIconIndex } from "@/lib/iconResolver";
+
+// Eagerly load icon index so first render-slide request is fast
+preloadIconIndex();
 
 type ResponseData = {
     html?: string;

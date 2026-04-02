@@ -20,6 +20,11 @@ interface IconEntry {
 
 let iconIndex: Map<string, IconEntry> | null = null;
 
+/** Pre-load icon index at module import time so the first request isn't slow. */
+export function preloadIconIndex(): void {
+    getIconIndex();
+}
+
 function getIconIndex(): Map<string, IconEntry> {
     if (iconIndex) return iconIndex;
 
