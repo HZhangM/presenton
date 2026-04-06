@@ -59,7 +59,7 @@ const PolaroidMemoirImageTextSlide: React.FC<{ data: Partial<z.infer<typeof Sche
                             <img
                                 src={data.image?.__image_url__}
                                 alt={data.image?.__image_prompt__}
-                                className="w-full h-auto object-cover"
+                                className="w-full h-auto object-contain"
                                 style={{ aspectRatio: '4/3' }}
                             />
                             {/* Tape decoration */}

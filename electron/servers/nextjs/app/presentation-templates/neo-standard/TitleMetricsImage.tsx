@@ -99,7 +99,7 @@ const dynamicSlideLayout: React.FC<{ data: Partial<z.infer<typeof Schema>> }> = 
                             <img
                                 src={mainImage?.__image_url__}
                                 alt={mainImage?.__image_prompt__}
-                                className="w-full h-full object-cover"
+                                className="w-full h-full object-contain"
                             />
                         </div>
                     </div>

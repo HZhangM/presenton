@@ -185,7 +185,7 @@ const ComicBookTeamSlide: React.FC<ComicBookTeamSlideProps> = ({ data: slideData
                                         <img
                                             src={member.image.__image_url__ || 'https://placehold.co/200x200'}
                                             alt={member.image.__image_prompt__ || member.name}
-                                            className="w-full h-full object-cover"
+                                            className="w-full h-full object-contain"
                                         />
                                     </div>
 

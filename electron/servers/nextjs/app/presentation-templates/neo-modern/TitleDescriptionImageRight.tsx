@@ -60,7 +60,7 @@ const dynamicSlideLayout: React.FC<{ data: Partial<z.infer<typeof Schema>> }> = 
                             <img
                                 src={image.__image_url__}
                                 alt={image.__image_prompt__ || 'Slide Visual'}
-                                className="w-full h-full object-cover"
+                                className="w-full h-full object-contain"
                                 style={{ objectPosition: '52.9% 44.07%' }}
                             />
                         )}

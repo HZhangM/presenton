@@ -114,7 +114,7 @@ const IntroSlideLayout: React.FC<IntroSlideLayoutProps> = ({ data: slideData }) 
                             <img
                                 src={slideData?.image?.__image_url__ || ''}
                                 alt={slideData?.image?.__image_prompt__ || slideData?.title || ''}
-                                className="w-full h-full object-cover grayscale contrast-125"
+                                className="w-full h-full object-contain grayscale contrast-125"
                             />
                         </div>
                     </div>

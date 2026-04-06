@@ -199,7 +199,7 @@ const BulletIconsOnlySlideLayout: React.FC<BulletIconsOnlySlideLayoutProps> = ({
                             <img
                                 src={slideData?.image?.__image_url__ || ''}
                                 alt={slideData?.image?.__image_prompt__ || slideData?.title || ''}
-                                className="w-full h-full object-cover"
+                                className="w-full h-full object-contain"
                             />
                         </div>
                     </div>

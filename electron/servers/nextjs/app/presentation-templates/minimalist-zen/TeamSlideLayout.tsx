@@ -147,7 +147,7 @@ const MinimalistZenTeamSlide: React.FC<TeamSlideLayoutProps> = ({ data: slideDat
                                     <img
                                         src={member.image.__image_url__ || ''}
                                         alt={member.image.__image_prompt__ || member.name}
-                                        className="w-full h-full object-cover"
+                                        className="w-full h-full object-contain"
                                     />
                                 </div>
 

@@ -163,7 +163,7 @@ const IntroSlideLayout: React.FC<IntroSlideLayoutProps> = ({ data: slideData }) 
                             <img
                                 src={slideData?.image?.__image_url__ || 'https://placehold.co/640x360'}
                                 alt={slideData?.image?.__image_prompt__ || slideData?.title || ''}
-                                className="w-full h-full object-cover opacity-90"
+                                className="w-full h-full object-contain opacity-90"
                                 style={{ 
                                     filter: 'saturate(0.8) contrast(0.9)'
                                 }}

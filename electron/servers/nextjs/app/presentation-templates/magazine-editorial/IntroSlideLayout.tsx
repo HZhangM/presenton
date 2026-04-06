@@ -149,7 +149,7 @@ const IntroSlideLayout: React.FC<IntroSlideLayoutProps> = ({ data: slideData }) 
                             <img
                                 src={slideData?.image?.__image_url__ || ''}
                                 alt={slideData?.image?.__image_prompt__ || slideData?.title || ''}
-                                className="w-full h-full object-cover"
+                                className="w-full h-full object-contain"
                                 style={{ borderRadius: '0' }}
                             />
                         </div>

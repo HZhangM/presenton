@@ -100,7 +100,7 @@ const SlateMinimalImageTextSlide: React.FC<{ data: Partial<z.infer<typeof Schema
               <img
                 src={data.image?.__image_url__}
                 alt={data.image?.__image_prompt__}
-                className="w-full h-full object-cover rounded-lg"
+                className="w-full h-full object-contain rounded-lg"
                 style={{
                   border: '1px solid rgba(0,0,0,0.08)',
                   borderRadius: '8px'

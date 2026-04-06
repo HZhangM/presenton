@@ -112,7 +112,7 @@ const ChalkPastelImageTextSlide: React.FC<{ data: Partial<z.infer<typeof Schema>
                              }}>
                             <img src={data.image?.__image_url__} 
                                  alt={data.image?.__image_prompt__} 
-                                 className="w-full h-full object-cover opacity-95" />
+                                 className="w-full h-full object-contain opacity-95" />
                             
                             {/* Subtle overlay for chalk pastel effect */}
                             <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-white opacity-10"></div>

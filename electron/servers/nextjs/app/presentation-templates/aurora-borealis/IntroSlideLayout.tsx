@@ -168,7 +168,7 @@ const IntroSlideLayout: React.FC<IntroSlideLayoutProps> = ({ data: slideData }) 
                             <img
                                 src={slideData?.image?.__image_url__ || 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'}
                                 alt={slideData?.image?.__image_prompt__ || slideData?.title || 'Northern lights aurora'}
-                                className="w-full h-full object-cover"
+                                className="w-full h-full object-contain"
                             />
                         </div>
                     </div>

@@ -164,7 +164,7 @@ const PixelRetroTeamSlide: React.FC<PixelRetroTeamSlideProps> = ({ data: slideDa
                                         <img 
                                             src={member.image.__image_url__} 
                                             alt={member.image.__image_prompt__}
-                                            className="w-full h-full object-cover"
+                                            className="w-full h-full object-contain"
                                             style={{ imageRendering: "pixelated" }}
                                         />
                                     </div>

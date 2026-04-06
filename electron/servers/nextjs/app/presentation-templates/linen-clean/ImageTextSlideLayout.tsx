@@ -98,7 +98,7 @@ const LinenCleanImageTextSlide: React.FC<{ data: Partial<z.infer<typeof Schema>>
                             <img
                                 src={data.image?.__image_url__}
                                 alt={data.image?.__image_prompt__}
-                                className="w-full h-[400px] object-cover rounded-xl shadow-lg"
+                                className="w-full h-[400px] object-contain rounded-xl shadow-lg"
                                 style={{
                                     border: '1px solid rgba(140,120,81,0.12)'
                                 }}

@@ -187,7 +187,7 @@ const VintageTeamSlide: React.FC<VintageTeamSlideProps> = ({ data: slideData }) 
                                             <img
                                                 src={member.image.__image_url__ || ''}
                                                 alt={member.image.__image_prompt__ || member.name}
-                                                className="w-full h-full object-cover"
+                                                className="w-full h-full object-contain"
                                                 style={{ filter: "sepia(10%)" }}
                                             />
                                         </div>

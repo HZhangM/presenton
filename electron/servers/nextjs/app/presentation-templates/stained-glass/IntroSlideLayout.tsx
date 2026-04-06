@@ -83,7 +83,7 @@ const StainedGlassIntroSlide: React.FC<IntroSlideLayoutProps> = ({ data: slideDa
                             <img
                                 src={slideData?.image?.__image_url__ || ''}
                                 alt={slideData?.image?.__image_prompt__ || slideData?.title || ''}
-                                className="w-full h-full object-cover opacity-90"
+                                className="w-full h-full object-contain opacity-90"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                         </div>

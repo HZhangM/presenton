@@ -153,7 +153,7 @@ const dynamicSlideLayout: React.FC<SlideLayoutProps> = ({ data: slideData }) => 
             <img
               src={slideData?.middleImage?.__image_url__ || ""}
               alt={slideData?.middleImage?.__image_prompt__ || "image"}
-              className="absolute inset-0 w-full h-full object-cover"
+              className="absolute inset-0 w-full h-full object-contain"
             />
           </div>
 

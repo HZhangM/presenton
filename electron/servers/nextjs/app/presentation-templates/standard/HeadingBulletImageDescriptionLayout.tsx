@@ -87,7 +87,7 @@ const dynamicSlideLayout: React.FC<SlideLayoutProps> = ({ data: slideData }) => 
                 <img
                   src={slideData.smallImage.__image_url__}
                   alt={slideData.smallImage.__image_prompt__ || "image"}
-                  className="absolute inset-0 w-full h-full object-cover"
+                  className="absolute inset-0 w-full h-full object-contain"
                 />
                 {/* overlay removed */}
               </>

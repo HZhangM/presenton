@@ -98,7 +98,7 @@ const ChalkboardImageTextSlide: React.FC<{ data: Partial<z.infer<typeof Schema>>
                             <img
                                 src={data.image?.__image_url__}
                                 alt={data.image?.__image_prompt__}
-                                className="w-full h-full object-cover rounded"
+                                className="w-full h-full object-contain rounded"
                                 style={{ 
                                     filter: 'brightness(0.9) contrast(1.1)',
                                     opacity: '0.95'

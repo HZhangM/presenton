@@ -162,7 +162,7 @@ const ChalkPastelTeamSlide: React.FC<ChalkPastelTeamSlideProps> = ({ data: slide
                                             <img
                                                 src={member.image.__image_url__ || ''}
                                                 alt={member.image.__image_prompt__ || member.name}
-                                                className="w-full h-3/4 object-cover rounded-lg"
+                                                className="w-full h-3/4 object-contain rounded-lg"
                                             />
                                             <div className="h-1/4 flex flex-col justify-center">
                                                 <h3 

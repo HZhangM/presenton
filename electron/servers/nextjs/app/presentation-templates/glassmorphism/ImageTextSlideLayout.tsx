@@ -95,7 +95,7 @@ const GlassmorphismImageTextSlide: React.FC<{ data: Partial<z.infer<typeof Schem
                                 <img
                                     src={data.image?.__image_url__}
                                     alt={data.image?.__image_prompt__}
-                                    className="w-full h-80 object-cover rounded-[16px]"
+                                    className="w-full h-80 object-contain rounded-[16px]"
                                 />
                             </div>
                         </div>

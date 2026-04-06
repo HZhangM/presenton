@@ -176,7 +176,7 @@ const OceanDeepTeamSlide: React.FC<OceanDeepTeamSlideProps> = ({ data }) => {
                                     <img
                                         src={member.image.__image_url__ || ''}
                                         alt={member.image.__image_prompt__ || member.name}
-                                        className="w-full h-full object-cover rounded-full"
+                                        className="w-full h-full object-contain rounded-full"
                                     />
                                 </div>
 

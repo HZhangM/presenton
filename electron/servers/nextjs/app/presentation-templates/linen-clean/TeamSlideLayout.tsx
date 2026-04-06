@@ -145,7 +145,7 @@ const LinenCleanTeamSlide: React.FC<{ data: Partial<z.infer<typeof Schema>> }> =
                   <img
                     src={member.image.__image_url__ || "https://placehold.co/640x360"}
                     alt={member.image.__image_prompt__ || member.name}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain"
                   />
                 </div>
                 

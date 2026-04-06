@@ -144,7 +144,7 @@ const TeamSlideLayout: React.FC<TeamSlideLayoutProps> = ({ data: slideData }) =>
                                         <img
                                             src={member.image.__image_url__}
                                             alt={member.image.__image_prompt__}
-                                            className="w-full h-full rounded-full object-cover"
+                                            className="w-full h-full rounded-full object-contain"
                                         />
                                         <div className="absolute -bottom-1 -right-1 w-3 h-3 rounded-full border-2 border-white"
                                              style={{ background: "var(--primary-color, #3b82f6)" }}>

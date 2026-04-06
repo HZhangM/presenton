@@ -169,7 +169,7 @@ const LinenCleanIntroSlide: React.FC<IntroSlideLayoutProps> = ({ data: slideData
                             <img
                                 src={slideData?.image?.__image_url__ || ''}
                                 alt={slideData?.image?.__image_prompt__ || slideData?.title || ''}
-                                className="w-full h-full object-cover"
+                                className="w-full h-full object-contain"
                                 style={{
                                     borderColor: 'var(--stroke, rgba(140, 120, 81, 0.15))'
                                 }}

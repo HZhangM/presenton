@@ -148,7 +148,7 @@ const TerracottaTeamSlide: React.FC<TerracottaTeamSlideProps> = ({ data: slideDa
                                             <img
                                                 src={member.image.__image_url__ || 'https://placehold.co/128x128'}
                                                 alt={member.image.__image_prompt__ || member.name}
-                                                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                                                className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
                                             />
                                         </div>
 

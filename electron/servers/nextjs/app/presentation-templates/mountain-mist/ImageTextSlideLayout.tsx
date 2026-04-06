@@ -118,7 +118,7 @@ const MountainMistImageTextSlide: React.FC<{ data: Partial<z.infer<typeof Schema
               <img
                 src={data.image?.__image_url__}
                 alt={data.image?.__image_prompt__}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain"
               />
               {/* Soft overlay for cohesion */}
               <div 

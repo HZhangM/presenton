@@ -139,7 +139,7 @@ const CandyPastelImageTextSlide: React.FC<{ data: Partial<z.infer<typeof Schema>
                             <img
                                 src={data.image?.__image_url__}
                                 alt={data.image?.__image_prompt__}
-                                className="w-full h-full object-cover"
+                                className="w-full h-full object-contain"
                             />
                             <div className="absolute top-4 right-4">
                                 <div className="w-4 h-4 rounded-full bg-white bg-opacity-80"></div>

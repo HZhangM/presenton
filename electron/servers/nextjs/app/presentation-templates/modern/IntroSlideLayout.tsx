@@ -127,7 +127,7 @@ const IntroPitchDeckSlide: React.FC<IntroSlideLayoutProps> = ({
             <img
               src={slideData?.image?.__image_url__}
               alt={slideData?.image?.__image_prompt__ || slideData?.title || "intro-image"}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-contain"
               crossOrigin="anonymous"
               referrerPolicy="no-referrer"
             />

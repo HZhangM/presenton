@@ -150,7 +150,7 @@ const OceanDeepIntroSlide: React.FC<IntroSlideLayoutProps> = ({ data: slideData 
                             <img
                                 src={slideData?.image?.__image_url__ || 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'}
                                 alt={slideData?.image?.__image_prompt__ || slideData?.title || 'Ocean deep underwater scene'}
-                                className="w-full h-full object-cover"
+                                className="w-full h-full object-contain"
                             />
                         </div>
                     </div>

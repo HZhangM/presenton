@@ -64,7 +64,7 @@ const NewspaperImageTextSlide: React.FC<{ data: Partial<z.infer<typeof Schema>> 
                             <img
                                 src={data.image?.__image_url__}
                                 alt={data.image?.__image_prompt__}
-                                className="w-full h-auto object-cover"
+                                className="w-full h-auto object-contain"
                                 style={{ border: '1px solid var(--primary-color, #1a1a1a)' }}
                             />
                             <div className="mt-4 pt-2" style={{ borderTop: '1px solid var(--stroke, rgba(0,0,0,0.2))' }}>

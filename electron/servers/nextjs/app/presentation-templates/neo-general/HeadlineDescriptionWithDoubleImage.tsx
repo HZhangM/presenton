@@ -103,7 +103,7 @@ const HeadlineDescriptionWithDoubleImageLayout = ({ data }: { data: Partial<z.in
                                 <img
                                     src={data.firstImage?.__image_url__}
                                     alt={data.firstImage?.__image_prompt__}
-                                    className="w-full h-full object-cover"
+                                    className="w-full h-full object-contain"
                                 />
                             </div>
 
@@ -115,7 +115,7 @@ const HeadlineDescriptionWithDoubleImageLayout = ({ data }: { data: Partial<z.in
                                 <img
                                     src={data.secondImage?.__image_url__}
                                     alt={data.secondImage?.__image_prompt__}
-                                    className="w-full h-full object-cover"
+                                    className="w-full h-full object-contain"
                                 />
                             </div>
                         </div>

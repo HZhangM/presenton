@@ -211,7 +211,7 @@ const NeonCyberpunkIntroSlide: React.FC<IntroSlideLayoutProps> = ({ data: slideD
                             <img
                                 src={slideData?.image?.__image_url__ || 'https://placehold.co/640x360'}
                                 alt={slideData?.image?.__image_prompt__ || slideData?.title || ''}
-                                className="w-full h-full object-cover"
+                                className="w-full h-full object-contain"
                             />
                             <div 
                                 className="absolute inset-0 bg-gradient-to-t from-transparent via-transparent to-transparent"

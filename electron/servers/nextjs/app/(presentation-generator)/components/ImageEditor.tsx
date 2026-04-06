@@ -343,7 +343,7 @@ const ImageEditor = ({
                           <img
                             src={previewImages}
                             alt={`Preview`}
-                            className="w-full h-full object-cover"
+                            className="w-full h-full object-contain"
                           />
                         )}
                       </div>
@@ -364,7 +364,7 @@ const ImageEditor = ({
                             <img
                               src={image.file_url || image.path}
                               alt={image.extras.prompt}
-                              className="w-full h-full object-cover"
+                              className="w-full h-full object-contain"
                             />
                           </div>
                         ))}
@@ -448,7 +448,7 @@ const ImageEditor = ({
                               <img
                                 src={uploadedImageUrl}
                                 alt="Uploaded preview"
-                                className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                                className="w-full h-full object-contain group-hover:scale-105 transition-transform"
                               />
                               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-200" />
                               <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
@@ -485,7 +485,7 @@ const ImageEditor = ({
                               <img
                                 src={image.file_url || image.path}
                                 alt="Uploaded preview"
-                                className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                                className="w-full h-full object-contain group-hover:scale-105 transition-transform"
                               />
                               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-200" />
                               <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
