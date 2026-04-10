@@ -127,6 +127,12 @@ const TiptapTextReplacer: React.FC<TiptapTextReplacerProps> = ({
 
     return () => {
       clearTimeout(timer);
+      // Unmount all React roots to prevent memory leaks
+      rootsRef.current.forEach(({ root }) => {
+        try { root.unmount(); } catch (_) { /* already unmounted */ }
+      });
+      rootsRef.current.clear();
+      setProcessedElements(new Set());
     };
   }, [slideData, slideIndex]);
   

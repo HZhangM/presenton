@@ -119,6 +119,8 @@ export const resetDownloadingModel = (): DownloadingModel => ({
  * Pulls Ollama model with progress tracking
  * Returns a promise that resolves with the final downloading model state
  */
+const PULL_MODEL_TIMEOUT_MS = 10 * 60 * 1000; // 10 minutes
+
 export const pullOllamaModel = async (
   model: string,
   onProgress?: (model: DownloadingModel) => void
@@ -133,10 +135,12 @@ export const pullOllamaModel = async (
           const data = await response.json();
           if (data.done && data.status !== "error") {
             clearInterval(interval);
+            clearTimeout(timeout);
             onProgress?.(data);
             resolve(data);
           } else if (data.status === "error") {
             clearInterval(interval);
+            clearTimeout(timeout);
             const resetData = resetDownloadingModel();
             onProgress?.(resetData);
             reject(new Error("Error occurred while pulling model"));
@@ -145,6 +149,7 @@ export const pullOllamaModel = async (
           }
         } else {
           clearInterval(interval);
+          clearTimeout(timeout);
           const resetData = resetDownloadingModel();
           onProgress?.(resetData);
           if (response.status === 403) {
@@ -154,10 +159,18 @@ export const pullOllamaModel = async (
         }
       } catch (error) {
         clearInterval(interval);
+        clearTimeout(timeout);
         const resetData = resetDownloadingModel();
         onProgress?.(resetData);
         reject(error);
       }
     }, 1000);
+
+    const timeout = setTimeout(() => {
+      clearInterval(interval);
+      const resetData = resetDownloadingModel();
+      onProgress?.(resetData);
+      reject(new Error("Model pull timed out after 10 minutes"));
+    }, PULL_MODEL_TIMEOUT_MS);
   });
 };

@@ -57,6 +57,18 @@ export interface CustomTemplates {
     isCustom: true;
 }
 
+// LRU cache with size limit to prevent unbounded memory growth
+const CACHE_MAX_SIZE = 50;
+
+function lruSet<K, V>(map: Map<K, V>, key: K, value: V) {
+  if (map.has(key)) map.delete(key); // re-insert to move to end
+  map.set(key, value);
+  if (map.size > CACHE_MAX_SIZE) {
+    const oldest = map.keys().next().value;
+    if (oldest !== undefined) map.delete(oldest);
+  }
+}
+
 // GLOBAL CACHE
 const customTemplateDetailsCache = new Map<string, CustomTemplateDetail>();
 
@@ -99,12 +111,12 @@ export async function getCustomTemplateFirstSlidePreview(
             const data: CustomTemplateDetailResponse = await TemplateService.getCustomTemplateDetails(presentationId);
             const firstLayout = data?.layouts?.[0];
             if (!firstLayout?.layout_code) {
-                customTemplateFirstSlideCache.set(presentationId, null);
+                lruSet(customTemplateFirstSlideCache, presentationId, null);
                 return null;
             }
 
             const compiled = compileCustomLayout(firstLayout.layout_code);
-            customTemplateFirstSlideCache.set(presentationId, compiled);
+            lruSet(customTemplateFirstSlideCache, presentationId, compiled);
             return compiled;
         } catch (err) {
             console.error("Error fetching first-slide preview:", err);
@@ -185,7 +197,7 @@ export async function getCustomTemplateDetails(
             };
 
             // Cache the result
-            customTemplateDetailsCache.set(templateId, result);
+            lruSet(customTemplateDetailsCache,templateId, result);
             return result;
         } catch (err) {
             console.error("Error fetching template details:", err);
@@ -345,7 +357,7 @@ export function useCustomTemplateDetails(templateDetail: { id: string, name: str
                 };
 
                 // Cache the result
-                customTemplateDetailsCache.set(templateDetail.id, result);
+                lruSet(customTemplateDetailsCache,templateDetail.id, result);
                 return result;
             } catch (err) {
                 console.error("Error fetching template details:", err);

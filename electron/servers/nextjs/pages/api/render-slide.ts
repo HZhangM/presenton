@@ -64,15 +64,8 @@ export default async function handler(
         }
 
         // Resolve __icon_query__ → __icon_url__ (data URIs) before rendering
-        const contentCopy = JSON.parse(JSON.stringify(content_json || {}));
-        const resolvedContent = resolveAllIcons(contentCopy);
-
-        // Debug: log icon resolution results
-        const iconsBefore = JSON.stringify(content_json).match(/__icon_query__/g)?.length ?? 0;
-        const iconsAfter = JSON.stringify(resolvedContent).match(/__icon_url__/g)?.length ?? 0;
-        if (iconsBefore > 0 || iconsAfter > 0) {
-            console.log(`[render-slide] Icons: ${iconsBefore} queries found, ${iconsAfter} URLs resolved`);
-        }
+        // resolveAllIcons mutates in-place; content_json from req.body is already a fresh object
+        const resolvedContent = resolveAllIcons(content_json || {});
 
         // Render the React component to static HTML
         const element = React.createElement(template.component, {
@@ -90,14 +83,31 @@ export default async function handler(
         // Build complete self-contained HTML document
         const html = buildSlideHtml(componentHtml, cssVarDecls, layout_id);
 
-        return res.status(200).json({ html, layout_id });
+        const result = res.status(200).json({ html, layout_id });
+        scheduleGC();
+        return result;
     } catch (error: any) {
         console.error("[render-slide] SSR error:", error);
-        return res.status(500).json({
+        const result = res.status(500).json({
             error: "SSR rendering failed",
             details: error?.message || String(error),
         });
+        scheduleGC();
+        return result;
     }
+}
+
+// V8 doesn't proactively GC large ArrayBuffers from request bodies.
+// Schedule two GC passes after each render to reclaim them.
+let gcTimer: ReturnType<typeof setTimeout> | null = null;
+function scheduleGC() {
+    if (typeof globalThis.gc !== 'function') return;
+    if (gcTimer) return; // already scheduled
+    gcTimer = setTimeout(() => {
+        globalThis.gc!();
+        globalThis.gc!();
+        gcTimer = null;
+    }, 5000);
 }
 
 function buildSlideHtml(
