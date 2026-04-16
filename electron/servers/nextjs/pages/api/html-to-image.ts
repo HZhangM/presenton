@@ -6,15 +6,31 @@
  * rendered template previews against original slide images.
  *
  * POST /api/html-to-image
- * Body: { html: string, width?: number, height?: number }
- * Returns: { success: boolean, image_base64?: string, error?: string }
+ * Body: { html: string, width?: number, height?: number, measure_content_area?: boolean }
+ * Returns: {
+ *   success: boolean,
+ *   image_base64?: string,
+ *   content_area?: { client_width, client_height, content_width, content_height,
+ *                    has_overflow, overflow_px },
+ *   error?: string
+ * }
  */
 import type { NextApiRequest, NextApiResponse } from "next";
 import puppeteer from "puppeteer";
 
+interface ContentAreaMeasurement {
+    client_width: number;
+    client_height: number;
+    content_width: number;
+    content_height: number;
+    has_overflow: boolean;
+    overflow_px: number;
+}
+
 interface HtmlToImageResponse {
     success: boolean;
     image_base64?: string;
+    content_area?: ContentAreaMeasurement;
     error?: string;
 }
 
@@ -36,7 +52,12 @@ export default async function handler(
         return res.status(405).json({ success: false, error: "Method not allowed" });
     }
 
-    const { html, width = 1280, height = 720 } = req.body;
+    const {
+        html,
+        width = 1280,
+        height = 720,
+        measure_content_area = false,
+    } = req.body;
 
     if (!html || typeof html !== "string") {
         return res.status(400).json({ success: false, error: "html is required" });
@@ -76,6 +97,35 @@ export default async function handler(
         // Extra delay for Tailwind JIT compilation and font loading
         await new Promise((resolve) => setTimeout(resolve, 1500));
 
+        // Optional: measure content-area overflow (for Step 2 visual correction)
+        let content_area: ContentAreaMeasurement | undefined;
+        if (measure_content_area) {
+            try {
+                content_area = await page.evaluate(() => {
+                    const el = document.querySelector(
+                        '[data-content-area="true"]'
+                    ) as HTMLElement | null;
+                    if (!el) return undefined;
+                    return {
+                        client_width: el.clientWidth,
+                        client_height: el.clientHeight,
+                        content_width: el.scrollWidth,
+                        content_height: el.scrollHeight,
+                        has_overflow:
+                            el.scrollHeight > el.clientHeight + 2 ||
+                            el.scrollWidth > el.clientWidth + 2,
+                        overflow_px: Math.max(
+                            el.scrollHeight - el.clientHeight,
+                            el.scrollWidth - el.clientWidth,
+                            0
+                        ),
+                    };
+                });
+            } catch (err) {
+                console.warn("[html-to-image] content_area measurement failed:", err);
+            }
+        }
+
         // Screenshot the viewport as PNG
         const screenshotBuffer = await page.screenshot({
             type: "png",
@@ -84,7 +134,11 @@ export default async function handler(
 
         const image_base64 = Buffer.from(screenshotBuffer).toString("base64");
 
-        return res.status(200).json({ success: true, image_base64 });
+        return res.status(200).json({
+            success: true,
+            image_base64,
+            ...(content_area ? { content_area } : {}),
+        });
     } catch (err: any) {
         console.error("[html-to-image] Error:", err);
         return res.status(200).json({
